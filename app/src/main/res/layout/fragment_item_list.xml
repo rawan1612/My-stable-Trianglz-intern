@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FAF7F3">
+    android:background="@color/veryLightPink">
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabs"
         android:layout_width="wrap_content"
@@ -13,7 +13,7 @@
         android:layout_marginStart="22dp"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="10dp"
-        android:background="#FAF7F3"
+        android:background="@color/veryLightPink"
         app:layout_constraintBottom_toTopOf="@id/list"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -22,8 +22,8 @@
         app:tabIndicatorHeight="0dp"
         app:tabMode="scrollable"
         app:tabSelectedTextColor="@color/white"
-        app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
-        app:tabTextColor="#232f38">
+        app:tabTextAppearance="@style/MyTabLayoutTextAppearance"
+        app:tabTextColor="@color/dark">
     </com.google.android.material.tabs.TabLayout>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -37,7 +37,7 @@
         android:layout_marginStart="22dp"
         android:layout_marginTop="70.3dp"
         android:layout_marginEnd="22.8dp"
-        android:background="#FAF7F3"
+        android:background="@color/veryLightPink"
         app:layoutManager="LinearLayoutManager"
         tools:context=".view.ItemFragment"
         tools:listitem="@layout/fragment_item" />

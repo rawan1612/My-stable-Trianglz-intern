@@ -23,9 +23,9 @@
             android:layout_marginEnd="43.5dp"
             android:layout_marginBottom="31.3dp"
             android:textAppearance="?attr/textAppearanceListItem"
-            android:textColor="#ffffff"
+            android:textColor="@color/white"
             android:textSize="16sp"
-            android:textStyle="normal"
+            android:fontFamily="@font/sfp_semibold"
             tools:text="Denver" />
 
         <TextView
@@ -36,9 +36,9 @@
             android:layout_marginEnd="86.5dp"
             android:layout_marginStart="12.5dp"
             android:layout_marginBottom="12.3dp"
-            android:textStyle="normal"
+            android:fontFamily="@font/sfp_regular"
             android:textSize="12sp"
-            android:textColor="#d4b287"
+            android:textColor="@color/veryLightBrown"
             tools:text="KWD 7500"
             android:textAppearance="?attr/textAppearanceListItem" />
     </androidx.cardview.widget.CardView>

@@ -38,6 +38,7 @@ var recycle = view.findViewById<RecyclerView>(R.id.list)
         tabLayout.addTab(tabLayout.newTab().setText(R.string.allTab))
         tabLayout.addTab(tabLayout.newTab().setText(R.string.horseTradingTab))
         tabLayout.addTab(tabLayout.newTab().setText(R.string.usedEquipmentTab))
+       
 
 
         // Set the adapter
