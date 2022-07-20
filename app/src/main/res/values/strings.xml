@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">marketPlace</string>
+    <string-array name="Countries">
+        <item>Kuwait</item>
+        <item>Egypt</item>
+        <item>Saudi Arabia</item>
+    </string-array>
 </resources>

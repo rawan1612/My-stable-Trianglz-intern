@@ -10,7 +10,7 @@
                     android:color="@android:color/white"/>
             </item>
 
-            <item>
+            <item android:top="5dp">
                 <bitmap
                     android:gravity="center_vertical|right"
                     android:src="@drawable/group_5"/>
