@@ -3,13 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/trianglz_intern/marketPlace/app/src/main/res/drawable/capsule_shape.xml" value="0.1885" />
         <entry key="..\:/trianglz_intern/marketPlace/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.1885" />
         <entry key="..\:/trianglz_intern/marketPlace/app/src/main/res/drawable/icon_btn_add_more_dark.png_background.xml" value="0.1885" />
         <entry key="..\:/trianglz_intern/marketPlace/app/src/main/res/drawable/rectangle.xml" value="0.1885" />
         <entry key="..\:/trianglz_intern/marketPlace/app/src/main/res/drawable/spinner_background.xml" value="0.144" />
+        <entry key="..\:/trianglz_intern/marketPlace/app/src/main/res/drawable/tab_color_selector.xml" value="0.1885" />
+        <entry key="..\:/trianglz_intern/marketPlace/app/src/main/res/drawable/tab_select_color.xml" value="0.1885" />
         <entry key="..\:/trianglz_intern/marketPlace/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/trianglz_intern/marketPlace/app/src/main/res/layout/fragment_item.xml" value="0.4" />
-        <entry key="..\:/trianglz_intern/marketPlace/app/src/main/res/layout/fragment_item_list.xml" value="0.223731884057971" />
+        <entry key="..\:/trianglz_intern/marketPlace/app/src/main/res/layout/fragment_item_list.xml" value="0.2" />
         <entry key="..\:/trianglz_intern/marketPlace/app/src/main/res/layout/snipper_text_view.xml" value="0.153125" />
         <entry key="..\:/trianglz_intern/marketPlace/app/src/main/res/layout/spinner_background.xml" value="0.223731884057971" />
         <entry key="..\:/trianglz_intern/marketPlace/app/src/main/res/mipmap-anydpi-v26/icon_btn_add_more_dark.png.xml" value="0.1885" />

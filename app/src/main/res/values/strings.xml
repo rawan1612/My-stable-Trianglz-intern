@@ -5,4 +5,8 @@
         <item>Egypt</item>
         <item>Saudi Arabia</item>
     </string-array>
+    <string name="allTab">All</string>
+    <string name="horseTradingTab">Horse Trading</string>
+    <string name="usedEquipmentTab">used Equipment</string>
+
 </resources>

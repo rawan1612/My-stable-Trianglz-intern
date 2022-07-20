@@ -1,5 +1,6 @@
 package com.example.marketplace.view
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
@@ -10,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.marketplace.R
 import com.example.marketplace.view.placeholder.PlaceholderContent
+import com.google.android.material.tabs.TabLayout
 
 /**
  * A fragment representing a list of Items.
@@ -32,6 +34,12 @@ class ItemFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_item_list, container, false)
 var recycle = view.findViewById<RecyclerView>(R.id.list)
+        val tabLayout = view.findViewById<TabLayout>(R.id.tabs)
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.allTab))
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.horseTradingTab))
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.usedEquipmentTab))
+
+
         // Set the adapter
         if (recycle is RecyclerView) {
             with(recycle) {
