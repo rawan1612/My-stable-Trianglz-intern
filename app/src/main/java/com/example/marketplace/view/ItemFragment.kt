@@ -31,12 +31,13 @@ class ItemFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_item_list, container, false)
-
+var recycle = view.findViewById<RecyclerView>(R.id.list)
         // Set the adapter
-        if (view is RecyclerView) {
-            with(view) {
+        if (recycle is RecyclerView) {
+            with(recycle) {
                 layoutManager = when {
                     columnCount <= 1 -> LinearLayoutManager(context)
+
                     else -> GridLayoutManager(context, columnCount)
                 }
                 adapter = MyItemRecyclerViewAdapter(PlaceholderContent.ITEMS)
