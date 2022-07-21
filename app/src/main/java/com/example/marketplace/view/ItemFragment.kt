@@ -1,6 +1,6 @@
 package com.example.marketplace.view
 
-import android.graphics.Color
+import android.app.Dialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
@@ -9,23 +9,43 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import com.example.marketplace.R
-import com.example.marketplace.view.placeholder.PlaceholderContent
+import com.example.marketplace.localSource.Client
+import com.example.marketplace.model.Repository
+import com.example.marketplace.viewModel.GetProductViewModel
+import com.example.marketplace.viewModel.GetProductsViewModelFactory
 import com.google.android.material.tabs.TabLayout
 
 /**
  * A fragment representing a list of Items.
  */
 class ItemFragment : Fragment() {
-
     private var columnCount = 2
-
+    private val viewModel by lazy {
+        ViewModelProvider(
+            requireActivity(),
+            factory = GetProductsViewModelFactory(
+                Repository.getInstance(
+                    Client.getInstance(),
+                    requireContext()
+                )
+            )
+        )[GetProductViewModel::class.java]
+    }
+lateinit var dialog : Dialog
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         arguments?.let {
             columnCount = it.getInt(ARG_COLUMN_COUNT)
         }
+        if (isAdded) {
+            dialog = Dialog(requireContext())
+        }
+        dialog.setContentView(R.layout.progress_dialog)
+        viewModel.getAllProduct()
+        dialog.show()
+
     }
 
     override fun onCreateView(
@@ -49,7 +69,15 @@ var recycle = view.findViewById<RecyclerView>(R.id.list)
 
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = MyItemRecyclerViewAdapter(PlaceholderContent.ITEMS)
+                viewModel.allProductListLiveData.observe(viewLifecycleOwner){
+                    if(!viewModel.allProductListLiveData.value.isNullOrEmpty()){
+                        dialog.dismiss()
+                        adapter = MyItemRecyclerViewAdapter(it, view.context)
+
+                    }
+
+                }
+             //   adapter = MyItemRecyclerViewAdapter(PlaceholderContent.ITEMS)
             }
         }
         return view
@@ -68,5 +96,16 @@ var recycle = view.findViewById<RecyclerView>(R.id.list)
                     putInt(ARG_COLUMN_COUNT, columnCount)
                 }
             }
+    }
+
+    private fun showProgressDialog(){
+        val dialog = Dialog(requireContext())
+        dialog.setContentView(R.layout.progress_dialog)
+        dialog.show()
+    }
+    private fun stopProgressDialog(){
+        val dialog = Dialog(requireContext())
+        dialog.setContentView(R.layout.progress_dialog)
+        dialog.dismiss()
     }
 }
