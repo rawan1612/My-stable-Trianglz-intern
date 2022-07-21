@@ -7,6 +7,7 @@
     </string-array>
     <string name="allTab">All</string>
     <string name="horseTradingTab">Horse Trading</string>
-    <string name="usedEquipmentTab">used Equipment</string>
+    <string name="usedEquipmentTab">Used Equipment</string>
+    <string name="currencyAndPrice">%1$s %2$f</string>
 
 </resources>

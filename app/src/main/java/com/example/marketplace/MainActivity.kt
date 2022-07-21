@@ -13,6 +13,7 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
         setUpSpinner()
+
     }
     fun setUpSpinner(){
         binding.apply {
