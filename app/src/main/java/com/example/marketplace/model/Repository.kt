@@ -15,4 +15,7 @@ class Repository private constructor(var localSource: LocalSource):RepositoryInt
     override suspend fun getProducts(): List<Response> {
         return localSource.getProducts()
     }
+    override suspend fun getProductsByCategory(selectedCategory :String):List<Response>{
+        return localSource.getProductsByCategory(selectedCategory)
+    }
 }

@@ -8,17 +8,35 @@
     android:orientation="vertical"
     tools:context=".MainActivity" >
 
-
-    <Spinner
+<androidx.appcompat.widget.LinearLayoutCompat
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/header"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    android:orientation="horizontal">
+    <TextView
         android:id="@+id/spinner"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_marginStart="22.4dp"
         android:layout_marginTop="17.6dp"
         android:gravity="left"
-        style="@style/SpinnerTheme"
+        style="@style/TextStyle"
+        android:text="Kuwait"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+<ImageView
+    android:layout_width="14dp"
+    android:layout_height="14dp"
+    android:layout_marginTop="30dp"
+    android:layout_marginStart="10dp"
+    android:src="@drawable/group_5">
+
+</ImageView>
+
+</androidx.appcompat.widget.LinearLayoutCompat>
+
 
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
@@ -57,7 +75,7 @@
         app:srcCompat="@drawable/icon_stores_normal" />
     <fragment
         android:id="@+id/myNavHostFragment"
-        app:layout_constraintTop_toBottomOf="@id/spinner"
+        app:layout_constraintTop_toBottomOf="@id/header"
         android:name="com.example.marketplace.view.ItemFragment"
         android:layout_marginTop="17.6dp"
         app:layout_constraintBottom_toBottomOf="parent"

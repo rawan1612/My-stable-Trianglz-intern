@@ -19,6 +19,9 @@ import com.example.marketplace.model.Response
 import com.example.marketplace.viewModel.GetProductViewModel
 import com.example.marketplace.viewModel.GetProductsViewModelFactory
 import com.google.android.material.tabs.TabLayout
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 class ItemFragment : Fragment() {
     private var columnCount = 2
@@ -76,12 +79,10 @@ class ItemFragment : Fragment() {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 when (tab?.text) {
                     activity?.getString(R.string.allTab) -> productAdapter.setProductList(allProductsList)
-                    activity?.getString(R.string.horseTradingTab) -> productAdapter.setProductList(
-                        filterTrading()
-                    )
-                    activity?.getString(R.string.usedEquipmentTab) -> productAdapter.setProductList(
+                    activity?.getString(R.string.horseTradingTab) -> filterTrading()
+                    activity?.getString(R.string.usedEquipmentTab) -> {
                         filterEquipment()
-                    )
+                    }
 
                 }
             }
@@ -95,7 +96,6 @@ class ItemFragment : Fragment() {
                     activity?.getString(R.string.allTab) -> productAdapter.setProductList(allProductsList)
                     activity?.getString(R.string.horseTradingTab) -> productAdapter.setProductList(filteredList)
                     activity?.getString(R.string.usedEquipmentTab) -> productAdapter.setProductList(filteredList)
-
 
                 }
             }
@@ -146,19 +146,38 @@ class ItemFragment : Fragment() {
 
 
     private fun filterTrading(): List<Response> {
-        for (i in allProductsList) {
-            if (i.category == "trading") {
-                filteredList.add(i)
+        val job = GlobalScope.launch {
+            viewModel.getProductsByCategory("usedEqu")
+        }
+        runBlocking {
+            job.join()
+            viewModel.getProductsByCategory("trading")
+            viewModel.filterdProductListLiveData.observe(viewLifecycleOwner) {
+                if (!viewModel.filterdProductListLiveData.value.isNullOrEmpty()) {
+                    filteredList = it.toMutableList()
+                    productAdapter.setProductList(filteredList)
+                } else {
+                    dialog.show()
+                }
             }
         }
         return filteredList
     }
 
     private fun filterEquipment(): List<Response> {
-
-        for (i in allProductsList) {
-            if (i.category == "usedEqu") {
-                filteredList.add(i)
+        val job = GlobalScope.launch {
+            viewModel.getProductsByCategory("usedEqu")
+        }
+        runBlocking {
+            job.join()
+            dialog.dismiss()
+            viewModel.filterdProductListLiveData.observe(viewLifecycleOwner) {
+                if (!viewModel.filterdProductListLiveData.value.isNullOrEmpty()) {
+                    filteredList = it.toMutableList()
+                    productAdapter.setProductList(filteredList)
+                } else {
+                    dialog.show()
+                }
             }
         }
         return filteredList
