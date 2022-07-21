@@ -15,9 +15,8 @@
         android:layout_height="30dp"
         android:layout_marginStart="22.4dp"
         android:layout_marginTop="17.6dp"
-        android:layout_marginEnd="271.6dp"
+        android:gravity="left"
         style="@style/SpinnerTheme"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

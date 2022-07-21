@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.marketplace.R
@@ -15,8 +16,15 @@ import com.example.marketplace.model.Response
 
 class MyItemRecyclerViewAdapter(private val context: Context) : RecyclerView.Adapter<MyItemRecyclerViewAdapter.ViewHolder>() {
     private var productList = mutableListOf<Response>()
-    fun setProductList(productList: List<Response>) {
-        this.productList = productList.toMutableList()
+    fun setProductList(newProductList: List<Response>) {
+        val diffUtil = MyDiffUtil(productList,newProductList)
+        val diffResult = DiffUtil.calculateDiff(diffUtil)
+        productList.clear()
+        productList.addAll(newProductList)
+        diffResult.dispatchUpdatesTo(this )
+    }
+    fun updateAfterFilter(filteredList: List<Response>){
+        productList = filteredList.toMutableList()
         notifyDataSetChanged()
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

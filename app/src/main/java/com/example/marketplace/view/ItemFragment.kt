@@ -1,6 +1,7 @@
 package com.example.marketplace.view
 
 import android.app.Dialog
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -19,9 +20,6 @@ import com.example.marketplace.viewModel.GetProductViewModel
 import com.example.marketplace.viewModel.GetProductsViewModelFactory
 import com.google.android.material.tabs.TabLayout
 
-/**
- * A fragment representing a list of Items.
- */
 class ItemFragment : Fragment() {
     private var columnCount = 2
     private var allProductsList: List<Response> = listOf()
@@ -41,8 +39,17 @@ class ItemFragment : Fragment() {
         )[GetProductViewModel::class.java]
     }
     private lateinit var dialog: Dialog
+    override fun onDetach() {
+        super.onDetach()
+        Log.i("TAG", "onDetach: ")
+    }
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        Log.i("TAG", "onAttach: ")
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.i("TAG", "onCreate: ")
         arguments?.let {
             columnCount = it.getInt(ARG_COLUMN_COUNT)
         }
@@ -136,6 +143,7 @@ class ItemFragment : Fragment() {
                 }
             }
     }
+
 
     private fun filterTrading(): List<Response> {
         for (i in allProductsList) {
