@@ -5,7 +5,8 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="160dp"
         android:layout_height="148dp"
-        app:cardCornerRadius="10dp"
+    android:layout_marginStart="22dp"
+    app:cardCornerRadius="10dp"
         android:layout_marginBottom="9.3dp">
     <ImageView
         android:id="@+id/itemImage"
@@ -14,7 +15,12 @@
         android:scaleType="fitXY"
         android:src="@drawable/horse">
     </ImageView>
+<View
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/text_rectangle">
 
+</View>
         <TextView
             android:id="@+id/item_number"
             android:layout_width="wrap_content"

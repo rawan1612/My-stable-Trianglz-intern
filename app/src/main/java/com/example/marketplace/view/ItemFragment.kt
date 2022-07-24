@@ -2,6 +2,8 @@ package com.example.marketplace.view
 
 import android.app.Dialog
 import android.content.Context
+import android.graphics.Color
+import android.opengl.Visibility
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -11,8 +13,11 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import com.example.marketplace.R
+import com.example.marketplace.databinding.ActivityMainBinding
+import com.example.marketplace.databinding.FragmentItemListBinding
 import com.example.marketplace.localSource.Client
 import com.example.marketplace.model.Repository
 import com.example.marketplace.model.Response
@@ -27,6 +32,7 @@ class ItemFragment : Fragment() {
     private var columnCount = 2
     private var allProductsList: List<Response> = listOf()
     private var filteredList: MutableList<Response> = arrayListOf()
+    private lateinit var  txt :  TextView
     private val productAdapter by lazy {
         MyItemRecyclerViewAdapter(
             requireContext()
@@ -41,18 +47,10 @@ class ItemFragment : Fragment() {
             )
         )[GetProductViewModel::class.java]
     }
+    private val binding by lazy { FragmentItemListBinding.inflate(layoutInflater) }
     private lateinit var dialog: Dialog
-    override fun onDetach() {
-        super.onDetach()
-        Log.i("TAG", "onDetach: ")
-    }
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        Log.i("TAG", "onAttach: ")
-    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.i("TAG", "onCreate: ")
         arguments?.let {
             columnCount = it.getInt(ARG_COLUMN_COUNT)
         }
@@ -62,36 +60,40 @@ class ItemFragment : Fragment() {
         dialog.setContentView(R.layout.progress_dialog)
         viewModel.getAllProduct()
         dialog.show()
-
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_item_list, container, false)
-        val recycle = view.findViewById<RecyclerView>(R.id.list)
-        val tabLayout = view.findViewById<TabLayout>(R.id.tabs)
+        val view = binding.root
+        val recycle = binding.list
+        val tabLayout = binding.tabs
         tabLayout.addTab(tabLayout.newTab().setText(R.string.allTab))
         tabLayout.addTab(tabLayout.newTab().setText(R.string.horseTradingTab))
         tabLayout.addTab(tabLayout.newTab().setText(R.string.usedEquipmentTab))
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.usedEquipmentTab))
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.usedEquipmentTab))
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.usedEquipmentTab))
+
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
+                Log.i("TAG", "onTabSelected: ")
                 when (tab?.text) {
                     activity?.getString(R.string.allTab) -> productAdapter.setProductList(allProductsList)
                     activity?.getString(R.string.horseTradingTab) -> filterTrading()
-                    activity?.getString(R.string.usedEquipmentTab) -> {
-                        filterEquipment()
-                    }
-
+                    activity?.getString(R.string.usedEquipmentTab) -> filterEquipment()
                 }
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab?) {
+                Log.i("TAG", "onTabUnselected: ")
                 filteredList.clear()
+                binding.list.visibility = View.VISIBLE
             }
 
             override fun onTabReselected(tab: TabLayout.Tab?) {
+                Log.i("TAG", "onTabReselected: ")
                 when (tab?.text) {
                     activity?.getString(R.string.allTab) -> productAdapter.setProductList(allProductsList)
                     activity?.getString(R.string.horseTradingTab) -> productAdapter.setProductList(filteredList)
@@ -105,27 +107,22 @@ class ItemFragment : Fragment() {
         )
 
         // Set the adapter
-        if (recycle is RecyclerView) {
-            with(recycle) {
-                layoutManager = when {
-                    columnCount <= 1 -> LinearLayoutManager(context)
+        with(recycle) {
+            layoutManager = when {
+                columnCount <= 1 -> LinearLayoutManager(context)
 
-                    else -> GridLayoutManager(context, columnCount)
-                }
-                viewModel.allProductListLiveData.observe(viewLifecycleOwner) {
-                    if (!viewModel.allProductListLiveData.value.isNullOrEmpty()) {
-                        dialog.dismiss()
-                        recycle.adapter = productAdapter
-                        productAdapter.setProductList(it)
-                        allProductsList = it
-                    }
-
+                else -> GridLayoutManager(context, columnCount)
+            }
+            viewModel.allProductListLiveData.observe(viewLifecycleOwner) {
+                if (!viewModel.allProductListLiveData.value.isNullOrEmpty()) {
+                    dialog.dismiss()
+                    recycle.adapter = productAdapter
+                    productAdapter.setProductList(it)
+                    allProductsList = it
                 }
 
-                //   adapter = MyItemRecyclerViewAdapter(PlaceholderContent.ITEMS)
             }
         }
-
         return view
     }
 
@@ -146,40 +143,41 @@ class ItemFragment : Fragment() {
 
 
     private fun filterTrading(): List<Response> {
-        val job = GlobalScope.launch {
+        dialog.show()
             viewModel.getProductsByCategory("usedEqu")
-        }
-        runBlocking {
-            job.join()
             viewModel.getProductsByCategory("trading")
             viewModel.filterdProductListLiveData.observe(viewLifecycleOwner) {
-                if (!viewModel.filterdProductListLiveData.value.isNullOrEmpty()) {
+                if (viewModel.filterdProductListLiveData.value!!.isNotEmpty()) {
+                    dialog.dismiss()
                     filteredList = it.toMutableList()
                     productAdapter.setProductList(filteredList)
-                } else {
-                    dialog.show()
                 }
+//                else {
+//                    dialog.dismiss()
+//                    binding.apply {
+//                      list.visibility = View.INVISIBLE
+//                    }
+//                }
             }
-        }
         return filteredList
     }
 
     private fun filterEquipment(): List<Response> {
-        val job = GlobalScope.launch {
-            viewModel.getProductsByCategory("usedEqu")
-        }
-        runBlocking {
-            job.join()
-            dialog.dismiss()
+        dialog.show()
+        viewModel.getProductsByCategory("usedEqu")
             viewModel.filterdProductListLiveData.observe(viewLifecycleOwner) {
-                if (!viewModel.filterdProductListLiveData.value.isNullOrEmpty()) {
+                if (viewModel.filterdProductListLiveData.value!!.isNotEmpty()) {
+                    dialog.dismiss()
                     filteredList = it.toMutableList()
                     productAdapter.setProductList(filteredList)
-                } else {
-                    dialog.show()
                 }
+//                else{
+//                    dialog.dismiss()
+//                    binding.apply {
+//                       list.visibility = View.INVISIBLE
+//                    }
+//            }
             }
-        }
         return filteredList
     }
 }

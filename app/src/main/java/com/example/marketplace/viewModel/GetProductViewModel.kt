@@ -21,9 +21,7 @@ class GetProductViewModel(private val repository: RepositoryInterface): ViewMode
     fun getAllProduct() {
         viewModelScope.launch(Dispatchers.IO) {
             val response = repository.getProducts()
-            withContext(Dispatchers.Main) {
                 delay(2000)
-
                 if(response.isNotEmpty()) {
                     allProductListMutableLiveData.postValue(response)
                 }
@@ -33,19 +31,16 @@ class GetProductViewModel(private val repository: RepositoryInterface): ViewMode
                         "Error fetching data in GetProductViewModel"
                     )
                 }
-            }
         }
     }
     fun getProductsByCategory(selectedCategory :String){
         viewModelScope.launch(Dispatchers.IO){
-            withContext(Dispatchers.Main) {
                 delay(1000)
                 val response = repository.getProductsByCategory(selectedCategory)
-                    if (response.isNotEmpty()) {
+                    if (response!=null) {
                         filterdProductListMutableLiveData.postValue(response)
                     } else {
                         Log.i("TAG", "getProductsByCategory: error ")
-                    }
             }
         }
 

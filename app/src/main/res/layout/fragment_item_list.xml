@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/veryLightPink">
+
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabs"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="22dp"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="10dp"
         android:background="@color/veryLightPink"
         app:layout_constraintBottom_toTopOf="@id/list"
+        app:layout_constraintEnd_toEndOf="@+id/list"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:tabBackground="@drawable/capsule_shape"
@@ -23,22 +24,64 @@
         app:tabMode="scrollable"
         app:tabSelectedTextColor="@color/white"
         app:tabTextAppearance="@style/MyTabLayoutTextAppearance"
-        app:tabTextColor="@color/dark">
-    </com.google.android.material.tabs.TabLayout>
+        app:tabTextColor="@color/dark"></com.google.android.material.tabs.TabLayout>
+
+    <ImageView
+        android:id="@+id/no_product"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="127.5dp"
+        android:layout_marginEnd="127.5dp"
+        android:layout_marginTop="292dp"
+        android:src="@drawable/image_img_market_place_empty"
+        android:layout_gravity="center"
+        app:layout_constraintBottom_toTopOf="@id/no_item_text_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></ImageView>
+
+    <TextView
+        android:id="@+id/no_item_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="30sp"
+        android:fontFamily="@font/sfp_bold"
+        android:gravity="center_horizontal"
+        android:lineSpacingExtra="5sp"
+        android:text="@string/noItem"
+        android:textColor="@color/darkBeige"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toTopOf="@id/not_available_location"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/no_product"></TextView>
+
+    <TextView
+        android:id="@+id/not_available_location"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:fontFamily="@font/sfp_regular"
+        android:gravity="center_horizontal"
+        android:text="@string/noAvailableItems"
+        android:textColor="@color/dark"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/no_item_text_view"></TextView>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list"
         android:name="com.example.marketplace.view.ItemFragment"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="22dp"
         android:layout_marginTop="70.3dp"
-        android:layout_marginEnd="22.8dp"
+        android:layout_marginEnd="22dp"
         android:background="@color/veryLightPink"
         app:layoutManager="LinearLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:context=".view.ItemFragment"
         tools:listitem="@layout/fragment_item" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
