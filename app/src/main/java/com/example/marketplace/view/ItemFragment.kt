@@ -78,7 +78,6 @@ class ItemFragment : Fragment() {
 
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
-                Log.i("TAG", "onTabSelected: ")
                 when (tab?.text) {
                     activity?.getString(R.string.allTab) -> productAdapter.setProductList(allProductsList)
                     activity?.getString(R.string.horseTradingTab) -> filterTrading()
@@ -87,13 +86,10 @@ class ItemFragment : Fragment() {
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab?) {
-                Log.i("TAG", "onTabUnselected: ")
                 filteredList.clear()
-                binding.list.visibility = View.VISIBLE
             }
 
             override fun onTabReselected(tab: TabLayout.Tab?) {
-                Log.i("TAG", "onTabReselected: ")
                 when (tab?.text) {
                     activity?.getString(R.string.allTab) -> productAdapter.setProductList(allProductsList)
                     activity?.getString(R.string.horseTradingTab) -> productAdapter.setProductList(filteredList)
@@ -148,16 +144,17 @@ class ItemFragment : Fragment() {
             viewModel.getProductsByCategory("trading")
             viewModel.filterdProductListLiveData.observe(viewLifecycleOwner) {
                 if (viewModel.filterdProductListLiveData.value!!.isNotEmpty()) {
+                    binding.list.visibility = View.VISIBLE
                     dialog.dismiss()
                     filteredList = it.toMutableList()
                     productAdapter.setProductList(filteredList)
                 }
-//                else {
-//                    dialog.dismiss()
-//                    binding.apply {
-//                      list.visibility = View.INVISIBLE
-//                    }
-//                }
+                else {
+                    dialog.dismiss()
+                    binding.apply {
+                      list.visibility = View.INVISIBLE
+                    }
+                }
             }
         return filteredList
     }
@@ -167,16 +164,17 @@ class ItemFragment : Fragment() {
         viewModel.getProductsByCategory("usedEqu")
             viewModel.filterdProductListLiveData.observe(viewLifecycleOwner) {
                 if (viewModel.filterdProductListLiveData.value!!.isNotEmpty()) {
+                    binding.list.visibility = View.VISIBLE
                     dialog.dismiss()
                     filteredList = it.toMutableList()
                     productAdapter.setProductList(filteredList)
                 }
-//                else{
-//                    dialog.dismiss()
-//                    binding.apply {
-//                       list.visibility = View.INVISIBLE
-//                    }
-//            }
+                else{
+                    dialog.dismiss()
+                    binding.apply {
+                       list.visibility = View.INVISIBLE
+                    }
+          }
             }
         return filteredList
     }
