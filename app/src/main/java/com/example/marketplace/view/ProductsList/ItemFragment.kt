@@ -153,6 +153,6 @@ class ItemFragment : Fragment() {
 
     private fun goToDetails(response : Response){
         findNavController().navigate(R.id.action_itemFragment_to_productDetails)
-        Toast.makeText(requireContext(), "${response.itemName}", Toast.LENGTH_SHORT).show()
+     //   Toast.makeText(requireContext(), "${response.itemName}", Toast.LENGTH_SHORT).show()
     }
 }

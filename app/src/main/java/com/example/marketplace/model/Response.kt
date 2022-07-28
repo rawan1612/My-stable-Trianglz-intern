@@ -11,13 +11,16 @@ data class Response(
     val thumbnail : String = "",
     val images : List<String> = listOf(),
     val description : String = "",
-    val latitude : Double = 0.0,
-    val longitude : Double = 0.0,
+    val place : Place ,
     val seller : Owner,
     val horseInfo: HorseInfo? = null,
     val isAvailable : Boolean = false,
     val category : String,
     val expiredDate : Date,
+)
+data class Place(
+    val latitude : Double = 0.0,
+    val longitude : Double = 0.0,
 )
 
 data class Owner(

@@ -15,8 +15,8 @@ companion object {
             "https://www.bluecross.org.uk/sites/default/files/d8/assets/images/111432lpr.jpg"
         ),
         description = "test",
-        latitude = 42.9096,
-        longitude = 25.2276,
+        place = Place(latitude = 42.9096,
+            longitude = 25.2276),
         seller = Owner(name = "Rawan", phoneNumber = 1550474808, email = "rbahnasy98@gmail.com"),
         horseInfo = HorseInfo(
             hName = "Denver",
@@ -40,8 +40,9 @@ companion object {
         thumbnail = "https://images.unsplash.com/photo-1598974357801-cbca100e65d3?ixlib=rb-1.2.1&w=1080&fit=max&q=80&fm=jpg&crop=entropy&cs=tinysrgb",
         images = listOf("https://www.thesprucepets.com/thmb/KYaXBSM013GnZ2jEZJnX4a9oIsU=/3865x2174/smart/filters:no_upscale()/horse-galloping-in-grass-688899769-587673275f9b584db3a44cdf.jpg"),
         description = "test",
-        latitude = 40.20,
-        longitude = 19.68,
+        place = Place(
+            latitude = 40.20,
+            longitude = 19.68),
         seller = Owner(name = "Rawan", phoneNumber = 1550474808, email = "rbahnasy98@gmail.com"),
         horseInfo = HorseInfo(
             hName = "Laredo",
@@ -65,8 +66,9 @@ companion object {
         thumbnail = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNa2YHs2_xZt_QU6mydXVkB1XgEnd43EWZnvCqq1M_a8CJar8C0SpOsBWVvZEyWHIIs6A&usqp=CAU",
         images = listOf("https://keyassets.timeincuk.net/inspirewp/live/wp-content/uploads/sites/14/2022/01/HH_Saddle_Fitting_20101016_347-920x518.jpg"),
         description = "test",
-        latitude = 40.20,
-        longitude = 19.68,
+        place = Place(
+            latitude = 40.20,
+            longitude = 19.68),
         seller = Owner(name = "Rawan", phoneNumber = 1550474808, email = "rbahnasy98@gmail.com"),
         isAvailable = true,
         category = "usedEqu",
@@ -84,8 +86,9 @@ companion object {
             "https://www.bluecross.org.uk/sites/default/files/d8/assets/images/111432lpr.jpg"
         ),
         description = "test",
-        latitude = 42.9096,
-        longitude = 25.2276,
+        place = Place(
+            latitude = 42.9096,
+            longitude = 25.2276),
         seller = Owner(name = "Rawan", phoneNumber = 1550474808, email = "rbahnasy98@gmail.com"),
         horseInfo = HorseInfo(
             hName = "Denver",
@@ -109,8 +112,9 @@ companion object {
         thumbnail = "https://images.unsplash.com/photo-1598974357801-cbca100e65d3?ixlib=rb-1.2.1&w=1080&fit=max&q=80&fm=jpg&crop=entropy&cs=tinysrgb",
         images = listOf("https://www.thesprucepets.com/thmb/KYaXBSM013GnZ2jEZJnX4a9oIsU=/3865x2174/smart/filters:no_upscale()/horse-galloping-in-grass-688899769-587673275f9b584db3a44cdf.jpg"),
         description = "test",
-        latitude = 40.20,
-        longitude = 19.68,
+        place = Place(
+            latitude = 40.20,
+            longitude = 19.68),
         seller = Owner(name = "Rawan", phoneNumber = 1550474808, email = "rbahnasy98@gmail.com"),
         horseInfo = HorseInfo(
             hName = "Laredo",
@@ -134,8 +138,8 @@ companion object {
         thumbnail = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNa2YHs2_xZt_QU6mydXVkB1XgEnd43EWZnvCqq1M_a8CJar8C0SpOsBWVvZEyWHIIs6A&usqp=CAU",
         images = listOf("https://keyassets.timeincuk.net/inspirewp/live/wp-content/uploads/sites/14/2022/01/HH_Saddle_Fitting_20101016_347-920x518.jpg"),
         description = "test",
-        latitude = 40.20,
-        longitude = 19.68,
+        place = Place(latitude = 40.20,
+            longitude = 19.68),
         seller = Owner(name = "Rawan", phoneNumber = 1550474808, email = "rbahnasy98@gmail.com"),
         isAvailable = true,
         category = "usedEqu",
