@@ -7,16 +7,24 @@
 
     <fragment
         android:id="@+id/itemFragment"
-        android:name="com.example.marketplace.view.ItemFragment"
+        android:name="com.example.marketplace.view.ProductsList.ItemFragment"
         android:label="fragment_item_list"
         tools:layout="@layout/fragment_item_list" >
         <argument
             android:name="country"
             app:argType="string" />
+        <action
+            android:id="@+id/action_itemFragment_to_productDetails"
+            app:destination="@id/productDetails" />
     </fragment>
     <activity
         android:id="@+id/mainActivity"
         android:name="com.example.marketplace.MainActivity"
         android:label="activity_main"
         tools:layout="@layout/activity_main" />
+    <fragment
+        android:id="@+id/productDetails"
+        android:name="com.example.marketplace.view.ProductDetails.ProductDetails"
+        android:label="fragment_product_details"
+        tools:layout="@layout/fragment_product_details" />
 </navigation>

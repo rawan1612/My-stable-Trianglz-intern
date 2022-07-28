@@ -11,5 +11,7 @@
     <string name="currencyAndPrice">%1$s %2$f</string>
     <string name="noItem">No items, yet!</string>
     <string name="noAvailableItems">Marketplace is not available yet to this location</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

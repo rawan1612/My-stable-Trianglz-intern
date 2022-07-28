@@ -144,7 +144,7 @@ companion object {
     )
     val response: List<Response> = listOf(item1, item2, item3, item4, item5, item6,item1, item2, item3, item4, item5, item6,item1, item2, item3, item4, item5, item6)
 
-    val horseTradingList : List<Response> = listOf(item1, item2, item4, item5)
+    val horseTradingList : List<Response> = listOf(item1, item2, item4)
    val usedEquipmentList : List<Response> = emptyList()
 }
 }

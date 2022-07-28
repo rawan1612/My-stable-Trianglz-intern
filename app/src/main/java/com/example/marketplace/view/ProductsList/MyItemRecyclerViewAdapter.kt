@@ -1,8 +1,6 @@
-package com.example.marketplace.view
+package com.example.marketplace.view.ProductsList
 
-import android.app.Activity
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -14,7 +12,7 @@ import com.example.marketplace.R
 import com.example.marketplace.databinding.FragmentItemBinding
 import com.example.marketplace.model.Response
 
-class MyItemRecyclerViewAdapter(private val context: Context) : RecyclerView.Adapter<MyItemRecyclerViewAdapter.ViewHolder>() {
+class MyItemRecyclerViewAdapter(private val context: Context,private val onClickListener: OnClickListenerProduct) : RecyclerView.Adapter<MyItemRecyclerViewAdapter.ViewHolder>() {
     private var productList = mutableListOf<Response>()
     fun setProductList(newProductList: List<Response>) {
         val diffUtil = MyDiffUtil(productList,newProductList)
@@ -44,6 +42,9 @@ class MyItemRecyclerViewAdapter(private val context: Context) : RecyclerView.Ada
             .into(holder.img)
         holder.idView.text = item.itemName
         holder.contentView.text = context.getString(R.string.currencyAndPrice,item.currency,item.price)
+        holder.itemView.setOnClickListener {
+            onClickListener.onClick(item)
+        }
     }
 
     override fun getItemCount(): Int = productList.size

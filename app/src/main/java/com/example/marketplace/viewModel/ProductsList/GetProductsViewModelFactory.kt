@@ -1,4 +1,4 @@
-package com.example.marketplace.viewModel
+package com.example.marketplace.viewModel.ProductsList
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
