@@ -6,6 +6,7 @@
         <entry key="..\:/trianglz_intern/marketPlace/app/src/main/res/drawable/capsule_shape.xml" value="0.1885" />
         <entry key="..\:/trianglz_intern/marketPlace/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.1885" />
         <entry key="..\:/trianglz_intern/marketPlace/app/src/main/res/drawable/icon_btn_add_more_dark.png_background.xml" value="0.1885" />
+        <entry key="..\:/trianglz_intern/marketPlace/app/src/main/res/drawable/location_info_view.xml" value="0.1365" />
         <entry key="..\:/trianglz_intern/marketPlace/app/src/main/res/drawable/rectangle.xml" value="0.1885" />
         <entry key="..\:/trianglz_intern/marketPlace/app/src/main/res/drawable/spinner_background.xml" value="0.144" />
         <entry key="..\:/trianglz_intern/marketPlace/app/src/main/res/drawable/tab_color_selector.xml" value="0.1885" />
@@ -14,7 +15,10 @@
         <entry key="..\:/trianglz_intern/marketPlace/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/trianglz_intern/marketPlace/app/src/main/res/layout/fragment_item.xml" value="0.1" />
         <entry key="..\:/trianglz_intern/marketPlace/app/src/main/res/layout/fragment_item_list.xml" value="0.2" />
-        <entry key="..\:/trianglz_intern/marketPlace/app/src/main/res/layout/fragment_product_details.xml" value="0.223731884057971" />
+        <entry key="..\:/trianglz_intern/marketPlace/app/src/main/res/layout/fragment_product_details.xml" value="0.264" />
+        <entry key="..\:/trianglz_intern/marketPlace/app/src/main/res/layout/location_info_view.xml" value="0.1734375" />
+        <entry key="..\:/trianglz_intern/marketPlace/app/src/main/res/layout/owner_info_layout.xml" value="0.16354166666666667" />
+        <entry key="..\:/trianglz_intern/marketPlace/app/src/main/res/layout/product_details_view.xml" value="0.223731884057971" />
         <entry key="..\:/trianglz_intern/marketPlace/app/src/main/res/layout/progress_bar.xml" value="0.223731884057971" />
         <entry key="..\:/trianglz_intern/marketPlace/app/src/main/res/layout/snipper_text_view.xml" value="0.153125" />
         <entry key="..\:/trianglz_intern/marketPlace/app/src/main/res/layout/spinner_background.xml" value="0.223731884057971" />

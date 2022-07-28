@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginStart="22.5dp"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/product_name"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fontFamily="@font/sfp_bold"
+        android:textSize="25sp"
+        android:lineHeight="30sp"
+        android:textColor="@color/dark"
+        android:text="Denver"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/product_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sfp_bold"
+            android:textSize="14sp"
+            android:textColor="@color/darkBeige"
+            android:text="KWD 7500">
+        </TextView>
+        <TextView
+            android:layout_marginStart="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sfp_regular"
+            android:textSize="12sp"
+            android:textColor="@color/dark_50"
+            android:text="This ad ends in 23 March">
+        </TextView>
+    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="280dp"
+        android:layout_height="186dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+    </androidx.recyclerview.widget.RecyclerView>
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/sfp_semibold"
+        android:textSize="15sp"
+        android:textColor="@color/dark"
+        android:text="Details">
+    </TextView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/sfp_regular"
+        android:textSize="15sp"
+        android:textColor="@color/dark_87"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="22.5dp"
+        android:text="Lorem Ipsum is simply dummy text of the print and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown .">
+    </TextView>
+</LinearLayout>

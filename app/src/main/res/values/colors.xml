@@ -11,5 +11,6 @@
     <color name="darkBeige">#a98264</color>
     <color name="dark">#232f38</color>
     <color name="veryLightBrown">#d4b287</color>
-    
+    <color name="dark_50">#80232f38</color>
+    <color name="dark_87">#df232f38</color>
 </resources>
