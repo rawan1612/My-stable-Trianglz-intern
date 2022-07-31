@@ -78,6 +78,8 @@ class ItemFragment : Fragment() {
 
             override fun onTabUnselected(tab: TabLayout.Tab?) {
                 filteredList.clear()
+                invisibleNoProductsViewItems()
+
             }
 
             override fun onTabReselected(tab: TabLayout.Tab?) {
@@ -112,19 +114,22 @@ class ItemFragment : Fragment() {
 
     private fun filterTrading(): List<Response> {
         dialog.show()
-            viewModel.getProductsByCategory("usedEqu")
             viewModel.getProductsByCategory("trading")
             viewModel.filterdProductListLiveData.observe(viewLifecycleOwner) {
                 if (viewModel.filterdProductListLiveData.value!!.isNotEmpty()) {
-                    binding.list.visibility = View.VISIBLE
+                    invisibleNoProductsViewItems()
                     dialog.dismiss()
                     filteredList = it.toMutableList()
                     productAdapter.setProductList(filteredList)
                 }
                 else {
                     dialog.dismiss()
+                    productAdapter.setProductList(emptyList())
                     binding.apply {
-                      list.visibility = View.INVISIBLE
+                        list.visibility = View.INVISIBLE
+                        notAvailableLocation.visibility = View.VISIBLE
+                        noItemTextView.visibility = View.VISIBLE
+                        noProduct.visibility = View.VISIBLE
                     }
                 }
             }
@@ -136,15 +141,19 @@ class ItemFragment : Fragment() {
         viewModel.getProductsByCategory("usedEqu")
             viewModel.filterdProductListLiveData.observe(viewLifecycleOwner) {
                 if (viewModel.filterdProductListLiveData.value!!.isNotEmpty()) {
-                    binding.list.visibility = View.VISIBLE
+                    invisibleNoProductsViewItems()
                     dialog.dismiss()
                     filteredList = it.toMutableList()
                     productAdapter.setProductList(filteredList)
                 }
                 else{
                     dialog.dismiss()
+                  //  productAdapter.setProductList(emptyList())
                     binding.apply {
-                       list.visibility = View.INVISIBLE
+                        list.visibility = View.INVISIBLE
+                        notAvailableLocation.visibility = View.VISIBLE
+                        noItemTextView.visibility = View.VISIBLE
+                        noProduct.visibility = View.VISIBLE
                     }
           }
             }
@@ -154,5 +163,13 @@ class ItemFragment : Fragment() {
     private fun goToDetails(response : Response){
         findNavController().navigate(R.id.action_itemFragment_to_productDetails)
      //   Toast.makeText(requireContext(), "${response.itemName}", Toast.LENGTH_SHORT).show()
+    }
+    private fun invisibleNoProductsViewItems(){
+        binding.apply {
+            list.visibility = View.VISIBLE
+            notAvailableLocation.visibility = View.INVISIBLE
+            noItemTextView.visibility = View.INVISIBLE
+            noProduct.visibility = View.INVISIBLE
+        }
     }
 }

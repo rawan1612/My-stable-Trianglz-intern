@@ -1,6 +1,7 @@
 package com.example.marketplace.view.ProductDetails
 
 import android.app.Activity
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -8,7 +9,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import android.widget.Toolbar
+import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentActivity
+import androidx.navigation.fragment.findNavController
 import com.example.marketplace.R
 import com.example.marketplace.model.Place
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -25,6 +30,12 @@ val address = Place(latitude = 42.9096,
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val toolbar = view.findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar)
+    //    (activity as AppCompatActivity).setSupportActionBar(view.findViewById(R.id.toolbar))
+        toolbar.setNavigationIcon(R.drawable.icon_back)
+        toolbar.setNavigationOnClickListener {
+            findNavController().navigate(R.id.action_productDetails_to_itemFragment)
+        }
         fetchLocation()
     }
     private fun fetchLocation(){

@@ -26,5 +26,11 @@
         android:id="@+id/productDetails"
         android:name="com.example.marketplace.view.ProductDetails.ProductDetails"
         android:label="fragment_product_details"
-        tools:layout="@layout/fragment_product_details" />
+        tools:layout="@layout/fragment_product_details" >
+        <action
+            android:id="@+id/action_productDetails_to_itemFragment"
+            app:destination="@id/itemFragment"
+            app:popUpTo="@id/itemFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>

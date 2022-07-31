@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+        <include layout="@layout/toolbar"/>
         <include layout="@layout/product_details_view"/>
         <include layout="@layout/owner_info_view"/>
         <include layout="@layout/location_info_view"/>
