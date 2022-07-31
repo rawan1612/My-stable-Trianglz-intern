@@ -3,6 +3,7 @@ package com.example.marketplace.model
 import java.util.*
 
 data class Response(
+    val productId : Double = 0.0,
     val country : String = "",
     val itemName : String = "",
     val price : Double = 0.0,

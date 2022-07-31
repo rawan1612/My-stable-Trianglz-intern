@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">marketPlace</string>
+    <string-array name="Countries">
+        <item>Kuwait</item>
+        <item>Egypt</item>
+        <item>Saudi Arabia</item>
+    </string-array>
+    <string name="allTab">All</string>
+    <string name="horseTradingTab">Horse Trading</string>
+    <string name="usedEquipmentTab">Used Equipment</string>
+    <string name="currencyAndPrice">%1$s %2$f</string>
+    <string name="noItem">No items, yet!</string>
+    <string name="noAvailableItems">Marketplace is not available yet to this location</string>
+
 </resources>
