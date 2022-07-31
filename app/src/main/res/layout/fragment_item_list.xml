@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/veryLightPink">
 
+<androidx.constraintlayout.widget.ConstraintLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/veryLightPink">
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabs"
         android:layout_width="0dp"
@@ -24,7 +25,7 @@
         app:tabMode="scrollable"
         app:tabSelectedTextColor="@color/white"
         app:tabTextAppearance="@style/MyTabLayoutTextAppearance"
-        app:tabTextColor="@color/dark"></com.google.android.material.tabs.TabLayout>
+        app:tabTextColor="@color/dark" />
 
     <ImageView
         android:id="@+id/no_product"
@@ -38,7 +39,7 @@
         app:layout_constraintBottom_toTopOf="@id/no_item_text_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></ImageView>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/no_item_text_view"
@@ -49,11 +50,11 @@
         android:lineSpacingExtra="5sp"
         android:text="@string/noItem"
         android:textColor="@color/darkBeige"
-        android:textSize="25dp"
+        android:textSize="25sp"
         app:layout_constraintBottom_toTopOf="@id/not_available_location"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/no_product"></TextView>
+        app:layout_constraintTop_toBottomOf="@id/no_product" />
 
     <TextView
         android:id="@+id/not_available_location"
@@ -66,7 +67,7 @@
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/no_item_text_view"></TextView>
+        app:layout_constraintTop_toBottomOf="@id/no_item_text_view" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list"
@@ -82,6 +83,5 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:context=".view.ProductsList.ItemFragment"
         tools:listitem="@layout/fragment_item" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
