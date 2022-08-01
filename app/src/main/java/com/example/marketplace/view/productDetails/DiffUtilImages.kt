@@ -1,7 +1,6 @@
 package com.example.marketplace.view.productDetails
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.marketplace.model.Response
 
 class DiffUtilImages (private val oldList : List<String>,
                       private val newList : List<String>

@@ -7,6 +7,7 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.marketplace.R
 import com.example.marketplace.databinding.ImageListItemBinding
 
 
@@ -23,16 +24,20 @@ class ItemImageRecyclerViewAdapter(private val context: Context): RecyclerView.A
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): ItemImageRecyclerViewAdapter.ViewHolder {
-        return ViewHolder(
-           ImageListItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
-        )
+    ): ViewHolder {
+        return ViewHolder(ImageListItemBinding.inflate(LayoutInflater.from(parent.context),parent,false))
     }
 
     override fun onBindViewHolder(holder: ItemImageRecyclerViewAdapter.ViewHolder, position: Int) {
         val item = productsList[position]
+        if(productsList.size > 1){
+            holder.itemView.layoutParams.width = context.resources.displayMetrics.heightPixels / 3 + 100
+        }
         Glide.with(context)
             .load(item)
+            .placeholder(R.drawable.horse)
+            .dontAnimate()
+           .fitCenter()
             .into(holder.img)
     }
 
@@ -41,6 +46,5 @@ class ItemImageRecyclerViewAdapter(private val context: Context): RecyclerView.A
     }
     inner class ViewHolder(binding: ImageListItemBinding) : RecyclerView.ViewHolder(binding.root) {
         val img : ImageView = binding.productImg
-
     }
 }

@@ -1,6 +1,7 @@
 package com.example.marketplace.view.productsList
 
 import android.app.Dialog
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
@@ -15,6 +16,8 @@ import com.example.marketplace.databinding.FragmentItemListBinding
 import com.example.marketplace.localSource.Client
 import com.example.marketplace.model.Repository
 import com.example.marketplace.model.Response
+import com.example.marketplace.view.productDetails.ProductDetails
+import com.example.marketplace.view.productDetails.ProductDetailsDirections
 import com.example.marketplace.viewModel.ProductsList.GetProductViewModel
 import com.example.marketplace.viewModel.ProductsList.GetProductsViewModelFactory
 import com.google.android.material.tabs.TabLayout
@@ -95,7 +98,6 @@ class ItemFragment : Fragment() {
         // Set the adapter
         with(recycle) {
             layoutManager =  GridLayoutManager(this.context, columnCount)
-
             viewModel.allProductListLiveData.observe(viewLifecycleOwner) {
                 if (!viewModel.allProductListLiveData.value.isNullOrEmpty()) {
                     dialog.dismiss()
@@ -158,7 +160,8 @@ class ItemFragment : Fragment() {
     }
 
     private fun goToDetails(response : Response){
-        findNavController().navigate(R.id.action_itemFragment_to_productDetails)
+        val action = ItemFragmentDirections.actionItemFragmentToProductDetails(response)
+        findNavController().navigate(action)
      //   Toast.makeText(requireContext(), "${response.itemName}", Toast.LENGTH_SHORT).show()
     }
     private fun invisibleNoProductsViewItems(){

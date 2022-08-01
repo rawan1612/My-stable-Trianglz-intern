@@ -38,7 +38,7 @@ companion object {
         price = 5000.0,
         currency = "USD",
         thumbnail = "https://images.unsplash.com/photo-1598974357801-cbca100e65d3?ixlib=rb-1.2.1&w=1080&fit=max&q=80&fm=jpg&crop=entropy&cs=tinysrgb",
-        images = listOf("https://www.thesprucepets.com/thmb/KYaXBSM013GnZ2jEZJnX4a9oIsU=/3865x2174/smart/filters:no_upscale()/horse-galloping-in-grass-688899769-587673275f9b584db3a44cdf.jpg"),
+        images = listOf("https://img.freepik.com/free-photo/horse-silhouette-against-warm-light_23-2149334095.jpg?w=2000"),
         description = "test",
         place = Place(
             latitude = 40.20,
