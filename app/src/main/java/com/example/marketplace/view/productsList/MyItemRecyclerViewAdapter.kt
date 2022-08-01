@@ -1,4 +1,4 @@
-package com.example.marketplace.view.ProductsList
+package com.example.marketplace.view.productsList
 
 import android.content.Context
 import android.view.LayoutInflater

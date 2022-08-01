@@ -1,4 +1,4 @@
-package com.example.marketplace.view.ProductsList
+package com.example.marketplace.view.productsList
 
 import androidx.recyclerview.widget.DiffUtil
 import com.example.marketplace.model.Response

@@ -1,7 +1,10 @@
 package com.example.marketplace.model
 
+import android.os.Parcelable
 import java.util.*
 
+import kotlinx.android.parcel.Parcelize
+@Parcelize
 data class Response(
     val productId : Double = 0.0,
     val country : String = "",
@@ -17,18 +20,21 @@ data class Response(
     val isAvailable : Boolean = false,
     val category : String,
     val expiredDate : Date,
-)
+): Parcelable
+@Parcelize
 data class Place(
     val latitude : Double = 0.0,
     val longitude : Double = 0.0,
-)
+): Parcelable
 
+@Parcelize
 data class Owner(
     val name : String = "",
     val phoneNumber : Long = 0,
     val email : String = ""
-)
+): Parcelable
 
+@Parcelize
 data class HorseInfo(
     val hName : String ="",
     val hColor : String = "",
@@ -37,4 +43,4 @@ data class HorseInfo(
     val hDOB : Date ,
     val hBreed : String = "",
     val hStrain : String = ""
-)
+): Parcelable

@@ -1,16 +1,13 @@
-package com.example.marketplace.view.ProductsList
+package com.example.marketplace.view.productsList
 
-import android.app.Activity
 import android.app.Dialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.marketplace.R

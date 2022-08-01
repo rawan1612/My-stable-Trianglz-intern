@@ -1,37 +1,38 @@
-package com.example.marketplace.view.ProductDetails
+package com.example.marketplace.view.productDetails
 
-import android.app.Activity
-import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import android.widget.Toolbar
-import androidx.activity.OnBackPressedCallback
-import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.FragmentActivity
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.marketplace.R
+import com.example.marketplace.databinding.FragmentItemListBinding
+import com.example.marketplace.databinding.ProductDetailsViewBinding
 import com.example.marketplace.model.Place
+import com.example.marketplace.view.productsList.MyItemRecyclerViewAdapter
+import com.example.marketplace.view.productsList.OnClickListenerProduct
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
 class ProductDetails : Fragment(), OnMapReadyCallback {
-val address = Place(latitude = 42.9096,
-    longitude = 25.2276)
+    private val productAdapter by lazy {
+        ItemImageRecyclerViewAdapter(
+            requireContext()
+        )
+    }
+    private val productImagesListBinding by lazy { ProductDetailsViewBinding.inflate(layoutInflater) }
+    private val listOfProductImages : List<String> = emptyList()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val toolbar = view.findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar)
-    //    (activity as AppCompatActivity).setSupportActionBar(view.findViewById(R.id.toolbar))
         toolbar.setNavigationIcon(R.drawable.icon_back)
         toolbar.setNavigationOnClickListener {
             findNavController().navigate(R.id.action_productDetails_to_itemFragment)
@@ -49,12 +50,15 @@ val address = Place(latitude = 42.9096,
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val view = productImagesListBinding.root
+        val recycle = productImagesListBinding.imagesList
+        with(recycle) {
+            layoutManager = LinearLayoutManager(this.context)
+                    recycle.adapter = productAdapter
+                    productAdapter.setProductsList(listOfProductImages.toMutableList())
 
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_product_details, container, false)
-
-    }
-    private fun addMarkers(googleMap: GoogleMap) {
+        }
+        return view
 
     }
 
