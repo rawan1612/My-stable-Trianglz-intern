@@ -155,7 +155,6 @@ class ListOfProductFragment : Fragment() {
             }
         return filteredList
     }
-
     private fun goToDetails(response : Response){
         val action = ListOfProductFragmentDirections.actionItemFragmentToProductDetails(response)
         findNavController().navigate(action)
