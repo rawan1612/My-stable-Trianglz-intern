@@ -74,4 +74,32 @@
         android:text="Lorem Ipsum is simply dummy text of the print and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown ."
         android:textColor="@color/dark_87"
         android:textSize="15sp" />
+    <RelativeLayout
+        android:id="@+id/product_sold_out"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:paddingRight="22.5dp"
+        android:layout_gravity="center"
+        android:visibility="visible">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/sold_out_rect" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:gravity="center"
+            android:layout_marginTop="16dp"
+            android:textSize="15sp"
+            android:fontFamily="@font/sfp_bold"
+            android:textColor="@color/white"
+            android:text="@string/Sold_out" />
+    </RelativeLayout>
+
 </LinearLayout>

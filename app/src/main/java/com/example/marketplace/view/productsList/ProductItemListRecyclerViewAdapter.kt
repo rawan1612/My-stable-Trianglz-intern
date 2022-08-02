@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.marketplace.databinding.FragmentItemBinding
+import com.example.marketplace.databinding.ItemProductListBinding
 import com.example.marketplace.model.Response
 
 class ProductItemListRecyclerViewAdapter(private val context: Context, private val onClickListener: OnClickListenerProduct) : RecyclerView.Adapter<ProductItemListRecyclerViewAdapter.ViewHolder>() {
@@ -26,7 +26,7 @@ class ProductItemListRecyclerViewAdapter(private val context: Context, private v
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
-            FragmentItemBinding.inflate(
+            ItemProductListBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -48,7 +48,7 @@ class ProductItemListRecyclerViewAdapter(private val context: Context, private v
 
     override fun getItemCount(): Int = productList.size
 
-    inner class ViewHolder(binding: FragmentItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(binding: ItemProductListBinding) : RecyclerView.ViewHolder(binding.root) {
         val idView: TextView = binding.itemNumber
         val contentView: TextView = binding.content
         val img : ImageView = binding.itemImage

@@ -27,5 +27,7 @@
     <string name="expireDate">This ad ends in %1$s %2$s</string>
     <string name="details">Details</string>
     <string name="owner">Owner</string>
+    <string name="Sold_out">Sold out</string>
+    <string name="similar_items">Similar items</string>
 
 </resources>

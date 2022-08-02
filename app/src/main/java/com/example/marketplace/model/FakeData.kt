@@ -107,7 +107,7 @@ companion object {
             hBreed = "Horse Breed",
             hStrain = "Horse Strain"
         ),
-        isAvailable = true,
+        isAvailable = false,
         category = "trading",
         expiredDate = Date(24 , 3,2022),
         country = "kuwait",

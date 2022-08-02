@@ -6,10 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -61,7 +58,7 @@ class ProductDetailsFragment : Fragment(), OnMapReadyCallback {
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
-        val latLng = LatLng(args.responseItem.place.latitude, args.responseItem.place.longitude)
+        val latLng = LatLng(product.place.latitude, product.place.longitude)
         val markerOptions = MarkerOptions().position(latLng)
         googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng))
         googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 5f))
@@ -71,7 +68,7 @@ class ProductDetailsFragment : Fragment(), OnMapReadyCallback {
     private fun setImagesList() {
         val recycle = view?.findViewById<RecyclerView>(R.id.images_list)
         if (arguments != null) {
-            listOfProductImages = args.responseItem.images.toMutableList()
+            listOfProductImages = product.images.toMutableList()
         }
         with(recycle) {
             val linearLayoutManager = LinearLayoutManager(view?.context)
@@ -92,12 +89,12 @@ class ProductDetailsFragment : Fragment(), OnMapReadyCallback {
         val ownerPhone = view?.findViewById<ImageView>(R.id.owner_phone)
         val ownerEmail = view?.findViewById<ImageView>(R.id.owner_email)
         val ownerImg = view?.findViewById<ImageView>(R.id.owner_img)
-        productName?.text = args.responseItem.itemName
+        checkProductAvailable()
+        productName?.text = product.itemName
         productPrice?.text = context?.getString(R.string.currencyAndPrice,product.currency,product.price.toString())
-
-        details?.text = args.responseItem.description
-        ownerName?.text = args.responseItem.seller.name
-        val month = getMonth(args.responseItem.expiredDate.month)
+        details?.text = product.description
+        ownerName?.text = product.seller.name
+        val month = getMonth(product.expiredDate.month)
         expireDate?.text = context?.getString(R.string.expireDate, product.expiredDate.day.toString() , month)
         ownerPhone?.setOnClickListener {
             val phoneNumber = product.seller.phoneNumber.toString().trim()
@@ -117,18 +114,11 @@ class ProductDetailsFragment : Fragment(), OnMapReadyCallback {
         }
         if (ownerImg != null) {
             Glide.with(requireContext())
-                .load(args.responseItem.seller.profileImg)
+                .load(product.seller.profileImg)
                 .placeholder(R.drawable.profile_img_placeholder)
                 .fitCenter()
                 .into(ownerImg)
         }
-        if (args.responseItem.horseInfo != null) {
-            view?.findViewById<LinearLayout>(R.id.horse_info_view)?.visibility = View.VISIBLE
-            setHorseInfo()
-        } else {
-            view?.findViewById<LinearLayout>(R.id.horse_info_view)?.visibility = View.GONE
-        }
-
 
     }
 
@@ -174,6 +164,29 @@ class ProductDetailsFragment : Fragment(), OnMapReadyCallback {
             )
         } catch (e: Exception) {
             Toast.makeText(requireContext(), e.message, Toast.LENGTH_LONG).show()
+        }
+    }
+    private fun checkProductAvailable(){
+        val productSoldOut = view?.findViewById<RelativeLayout>(R.id.product_sold_out)
+        val ownerInfoView = view?.findViewById<LinearLayout>(R.id.owner_info_view)
+        val horseInfoView = view?.findViewById<LinearLayout>(R.id.horse_info_view)
+
+        if(!product.isAvailable){
+            productSoldOut?.visibility = View.VISIBLE
+            ownerInfoView?.visibility= View.GONE
+            horseInfoView?.visibility = View.GONE
+
+
+        }else{
+            productSoldOut?.visibility = View.GONE
+            ownerInfoView?.visibility= View.VISIBLE
+            if (product.horseInfo != null){
+                horseInfoView?.visibility = View.VISIBLE
+                setHorseInfo()
+            }else{
+                horseInfoView?.visibility = View.GONE
+            }
+
         }
     }
 }

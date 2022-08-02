@@ -9,7 +9,7 @@
         android:id="@+id/itemFragment"
         android:name="com.example.marketplace.view.productsList.ListOfProductFragment"
         android:label="fragment_item_list"
-        tools:layout="@layout/fragment_item_list" >
+        tools:layout="@layout/fragmet_list_of_products" >
         <argument
             android:name="country"
             app:argType="string" />
