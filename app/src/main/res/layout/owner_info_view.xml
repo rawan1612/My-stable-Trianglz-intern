@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
     <LinearLayout
         android:layout_width="match_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_height="70dp"
         android:background="@color/veryLightPink"
         android:gravity="center_vertical"
@@ -18,6 +14,7 @@
             android:layout_marginStart="23dp"
             app:cardCornerRadius="10dp">
             <ImageView
+                android:id="@+id/owner_img"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:src="@drawable/avatar">
@@ -30,6 +27,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/owner_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/sfp_semibold"
@@ -42,7 +40,7 @@
                 android:fontFamily="@font/sfp_regular"
                 android:textSize="12sp"
                 android:textColor="@color/darkBeige"
-                android:text="Owner">
+                android:text="@string/owner">
             </TextView>
         </LinearLayout>
         <androidx.cardview.widget.CardView
@@ -53,6 +51,7 @@
             card_view:cardBackgroundColor="@color/white"
             card_view:cardCornerRadius="10dp">
             <ImageView
+                android:id="@+id/owner_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/icon_btn_email">
@@ -67,6 +66,7 @@
             card_view:cardBackgroundColor="@color/white"
             card_view:cardCornerRadius="10dp">
             <ImageView
+                android:id="@+id/owner_phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/icon_btn_phone">
@@ -74,4 +74,3 @@
             </ImageView>
         </androidx.cardview.widget.CardView>
     </LinearLayout>
-</LinearLayout>

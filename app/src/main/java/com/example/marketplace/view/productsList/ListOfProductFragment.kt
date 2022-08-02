@@ -1,7 +1,6 @@
 package com.example.marketplace.view.productsList
 
 import android.app.Dialog
-import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
@@ -16,19 +15,17 @@ import com.example.marketplace.databinding.FragmentItemListBinding
 import com.example.marketplace.localSource.Client
 import com.example.marketplace.model.Repository
 import com.example.marketplace.model.Response
-import com.example.marketplace.view.productDetails.ProductDetails
-import com.example.marketplace.view.productDetails.ProductDetailsDirections
 import com.example.marketplace.viewModel.ProductsList.GetProductViewModel
 import com.example.marketplace.viewModel.ProductsList.GetProductsViewModelFactory
 import com.google.android.material.tabs.TabLayout
 
-class ItemFragment : Fragment() {
+class ListOfProductFragment : Fragment() {
     private var columnCount = 2
     private var allProductsList: List<Response> = listOf()
     private var filteredList: MutableList<Response> = arrayListOf()
     private lateinit var  txt :  TextView
     private val productAdapter by lazy {
-        MyItemRecyclerViewAdapter(
+        ProductItemListRecyclerViewAdapter(
             requireContext(), OnClickListenerProduct { response -> goToDetails(response) }
         )
     }
@@ -160,9 +157,8 @@ class ItemFragment : Fragment() {
     }
 
     private fun goToDetails(response : Response){
-        val action = ItemFragmentDirections.actionItemFragmentToProductDetails(response)
+        val action = ListOfProductFragmentDirections.actionItemFragmentToProductDetails(response)
         findNavController().navigate(action)
-     //   Toast.makeText(requireContext(), "${response.itemName}", Toast.LENGTH_SHORT).show()
     }
     private fun invisibleNoProductsViewItems(){
         binding.apply {

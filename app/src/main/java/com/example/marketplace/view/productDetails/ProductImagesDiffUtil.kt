@@ -2,8 +2,8 @@ package com.example.marketplace.view.productDetails
 
 import androidx.recyclerview.widget.DiffUtil
 
-class DiffUtilImages (private val oldList : List<String>,
-                      private val newList : List<String>
+class ProductImagesDiffUtil (private val oldList : List<String>,
+                             private val newList : List<String>
 ): DiffUtil.Callback()
 {
     override fun getOldListSize(): Int {

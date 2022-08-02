@@ -28,8 +28,8 @@
         android:layout_height="19dp"
         android:layout_marginStart="12.5dp"
         android:layout_marginTop="97.7dp"
-        android:layout_marginEnd="43.5dp"
         android:layout_marginBottom="31.3dp"
+        android:layout_gravity="left"
         android:fontFamily="@font/sfp_semibold"
         android:textAppearance="?attr/textAppearanceListItem"
         android:textColor="@color/white"
@@ -42,11 +42,11 @@
         android:layout_height="14dp"
         android:layout_marginStart="12.5dp"
         android:layout_marginTop="121.7dp"
-        android:layout_marginEnd="86.5dp"
         android:layout_marginBottom="12.3dp"
         android:fontFamily="@font/sfp_regular"
         android:textAppearance="?attr/textAppearanceListItem"
         android:textColor="@color/veryLightBrown"
         android:textSize="12sp"
+        android:layout_gravity="left"
         tools:text="KWD 7500" />
 </androidx.cardview.widget.CardView>

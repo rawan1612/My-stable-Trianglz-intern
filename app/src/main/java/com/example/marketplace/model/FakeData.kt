@@ -1,10 +1,9 @@
 package com.example.marketplace.model
 
-import java.util.*
 class FakeData {
 
 companion object {
-    val item1 = Response(
+    private val item1 = Response(
         productId = 1.0,
         itemName = "Denver",
         price = 7500.0,
@@ -15,24 +14,26 @@ companion object {
             "https://www.bluecross.org.uk/sites/default/files/d8/assets/images/111432lpr.jpg"
         ),
         description = "test",
-        place = Place(latitude = 42.9096,
-            longitude = 25.2276),
-        seller = Owner(name = "Rawan", phoneNumber = 1550474808, email = "rbahnasy98@gmail.com"),
+        place = Place(latitude = 30.0,
+            longitude = 31.2,
+            address = "gamal abd elnaser street "
+        ),
+        seller = Owner(name = "Rawan", phoneNumber = 1550474808, email = "rbahnasy98@gmail.com",profileImg = "https://cdn.dribbble.com/users/2313212/screenshots/11256142/media/27b57b3ee2ac221dc8c616d02161d96b.jpg?compress=1&resize=400x300&vertical=top"),
         horseInfo = HorseInfo(
             hName = "Denver",
             hColor = "White",
             hSexType = "Male",
             hGender = "Gender",
-            hDOB = Date(12 / 1 / 2021),
+            hDOB = "12 / 1 / 2021",
             hBreed = "Horse Breed",
             hStrain = "Horse Strain"
         ),
         isAvailable = true,
         category = "trading",
-        expiredDate = Date(24 / 3),
-        country = "kuwait"
+        expiredDate = Date(24 , 3,2022),
+        country = "kuwait",
     )
-    val item2 = Response(
+    private val item2 = Response(
         productId = 2.0,
         itemName = "Laredo",
         price = 5000.0,
@@ -41,24 +42,27 @@ companion object {
         images = listOf("https://img.freepik.com/free-photo/horse-silhouette-against-warm-light_23-2149334095.jpg?w=2000"),
         description = "test",
         place = Place(
-            latitude = 40.20,
-            longitude = 19.68),
+            latitude = 29.37,
+            longitude = 47.9,
+            address = "malak hifni street "
+        ),
         seller = Owner(name = "Rawan", phoneNumber = 1550474808, email = "rbahnasy98@gmail.com"),
         horseInfo = HorseInfo(
             hName = "Laredo",
             hColor = "Brown",
             hSexType = "Male",
             hGender = "Gender",
-            hDOB = Date(16 / 10 / 2021),
+            hDOB = "16 / 10 / 2021",
             hBreed = "Horse Breed",
-            hStrain = "Horse Strain"
+            hStrain = "Horse Strain",
         ),
         isAvailable = true,
         category = "trading",
-        expiredDate = Date(25 / 8),
-        country = "kuwait"
+        expiredDate = Date(25 , 8 ,2022),
+        country = "kuwait",
+
     )
-    val item3 = Response(
+    private val item3 = Response(
         productId = 3.0,
         itemName = "Horse Chair seat",
         price = 240.0,
@@ -68,14 +72,17 @@ companion object {
         description = "test",
         place = Place(
             latitude = 40.20,
-            longitude = 19.68),
+            longitude = 19.68 ,
+            address = "gamal abd elnaser street "
+        ),
         seller = Owner(name = "Rawan", phoneNumber = 1550474808, email = "rbahnasy98@gmail.com"),
         isAvailable = true,
         category = "usedEqu",
-        expiredDate = Date(25 / 8),
-        country = "kuwait"
+        expiredDate = Date(25 ,8,2022),
+        country = "kuwait",
+
     )
-    val item4 = Response(
+    private val item4 = Response(
         productId = 1.0,
         itemName = "Denver",
         price = 7500.0,
@@ -88,23 +95,25 @@ companion object {
         description = "test",
         place = Place(
             latitude = 42.9096,
-            longitude = 25.2276),
-        seller = Owner(name = "Rawan", phoneNumber = 1550474808, email = "rbahnasy98@gmail.com"),
+            longitude = 25.2276,
+            address = "gamal abd elnaser street "),
+        seller = Owner(name = "Rawan", phoneNumber = 0, email = "rbahnasy98@gmail.com"),
         horseInfo = HorseInfo(
             hName = "Denver",
             hColor = "White",
             hSexType = "Male",
             hGender = "Gender",
-            hDOB = Date(12 / 1 / 2021),
+            hDOB = "12 / 1 / 2021",
             hBreed = "Horse Breed",
             hStrain = "Horse Strain"
         ),
         isAvailable = true,
         category = "trading",
-        expiredDate = Date(24 / 3),
-        country = "kuwait"
+        expiredDate = Date(24 , 3,2022),
+        country = "kuwait",
+
     )
-    val item5 = Response(
+    private val item5 = Response(
         productId = 2.0,
         itemName = "Laredo",
         price = 5000.0,
@@ -114,23 +123,25 @@ companion object {
         description = "test",
         place = Place(
             latitude = 40.20,
-            longitude = 19.68),
+            longitude = 19.68,address = "gamal abd elnaser street "),
         seller = Owner(name = "Rawan", phoneNumber = 1550474808, email = "rbahnasy98@gmail.com"),
         horseInfo = HorseInfo(
             hName = "Laredo",
             hColor = "Brown",
             hSexType = "Male",
             hGender = "Gender",
-            hDOB = Date(16 / 10 / 2021),
+            hDOB = "16 / 10 / 2021",
             hBreed = "Horse Breed",
             hStrain = "Horse Strain"
         ),
         isAvailable = true,
         category = "trading",
-        expiredDate = Date(25 / 8),
-        country = "kuwait"
+        expiredDate = Date(25 , 8,2022),
+        country = "kuwait",
+
+
     )
-    val item6 = Response(
+    private val item6 = Response(
         productId = 3.0,
         itemName = "Horse Chair seat",
         price = 240.0,
@@ -139,12 +150,13 @@ companion object {
         images = listOf("https://keyassets.timeincuk.net/inspirewp/live/wp-content/uploads/sites/14/2022/01/HH_Saddle_Fitting_20101016_347-920x518.jpg"),
         description = "test",
         place = Place(latitude = 40.20,
-            longitude = 19.68),
+            longitude = 19.68,
+            address = "gamal abd elnaser street "),
         seller = Owner(name = "Rawan", phoneNumber = 1550474808, email = "rbahnasy98@gmail.com"),
         isAvailable = true,
         category = "usedEqu",
-        expiredDate = Date(25 / 8),
-        country = "kuwait"
+        expiredDate = Date(12,1,2001),
+        country = "kuwait",
     )
     val response: List<Response> = listOf(item1, item2, item3, item4, item5, item6,item1, item2, item3, item4, item5, item6,item1, item2, item3, item4, item5, item6)
 

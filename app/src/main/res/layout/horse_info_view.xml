@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   android:id="@+id/horse_info_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_marginStart="22.5dp"
     android:layout_marginEnd="22.5dp"
-    android:layout_marginTop="10dp"
+    android:layout_marginTop="20dp"
     android:layout_marginBottom="22.5dp">
     <TextView
         android:layout_width="wrap_content"
@@ -34,6 +35,7 @@
             android:layout_weight="1" />
 
         <TextView
+            android:id="@+id/horse_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Denver"
@@ -68,6 +70,7 @@
             android:layout_weight="1" />
 
         <TextView
+            android:id="@+id/horse_color"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Gray"
@@ -104,6 +107,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/horse_type"
             android:text="Male"
             android:layout_weight="1"
             android:fontFamily="@font/sfp_semibold"
@@ -138,6 +142,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/horse_gender"
             android:text="Gender"
             android:layout_weight="1"
             android:fontFamily="@font/sfp_semibold"
@@ -170,6 +175,7 @@
             android:layout_weight="1" />
 
         <TextView
+            android:id="@+id/HDOB"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="12 Jan,2021"
@@ -204,6 +210,7 @@
             android:layout_weight="1" />
 
         <TextView
+            android:id="@+id/horse_breed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Horse Breed"
@@ -238,6 +245,7 @@
             android:layout_weight="1" />
 
         <TextView
+            android:id="@+id/horse_strain"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Horse Strain"

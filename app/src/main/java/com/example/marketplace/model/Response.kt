@@ -4,6 +4,10 @@ import android.os.Parcelable
 import java.util.*
 
 import kotlinx.android.parcel.Parcelize
+import java.time.DayOfWeek
+import java.time.Month
+import java.time.Year
+
 @Parcelize
 data class Response(
     val productId : Double = 0.0,
@@ -21,14 +25,24 @@ data class Response(
     val category : String,
     val expiredDate : Date,
 ): Parcelable
+
+@Parcelize
+data class Date(
+    val day : Int,
+    val month: Int,
+    val year: Int
+): Parcelable
+
 @Parcelize
 data class Place(
     val latitude : Double = 0.0,
     val longitude : Double = 0.0,
+    val address: String =""
 ): Parcelable
 
 @Parcelize
 data class Owner(
+    val profileImg : String? = null,
     val name : String = "",
     val phoneNumber : Long = 0,
     val email : String = ""
@@ -40,7 +54,7 @@ data class HorseInfo(
     val hColor : String = "",
     val hSexType : String = "",
     val hGender : String = "",
-    val hDOB : Date ,
+    val hDOB : String = "" ,
     val hBreed : String = "",
     val hStrain : String = ""
 ): Parcelable

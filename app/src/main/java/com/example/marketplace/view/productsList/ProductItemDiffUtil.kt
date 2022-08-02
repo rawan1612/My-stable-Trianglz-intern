@@ -3,8 +3,8 @@ package com.example.marketplace.view.productsList
 import androidx.recyclerview.widget.DiffUtil
 import com.example.marketplace.model.Response
 
-class MyDiffUtil(   private val oldList : List<Response>,
-        private val newList : List<Response>
+class ProductItemDiffUtil(private val oldList : List<Response>,
+                          private val newList : List<Response>
 ) : DiffUtil.Callback() {
 
     override fun getNewListSize(): Int {

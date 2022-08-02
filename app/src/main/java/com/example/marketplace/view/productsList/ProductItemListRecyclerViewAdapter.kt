@@ -8,14 +8,13 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.marketplace.R
 import com.example.marketplace.databinding.FragmentItemBinding
 import com.example.marketplace.model.Response
 
-class MyItemRecyclerViewAdapter(private val context: Context,private val onClickListener: OnClickListenerProduct) : RecyclerView.Adapter<MyItemRecyclerViewAdapter.ViewHolder>() {
+class ProductItemListRecyclerViewAdapter(private val context: Context, private val onClickListener: OnClickListenerProduct) : RecyclerView.Adapter<ProductItemListRecyclerViewAdapter.ViewHolder>() {
     private var productList = mutableListOf<Response>()
     fun setProductList(newProductList: List<Response>) {
-        val diffUtil = MyDiffUtil(productList,newProductList)
+        val diffUtil = ProductItemDiffUtil(productList,newProductList)
         val diffResult = DiffUtil.calculateDiff(diffUtil)
         productList.clear()
         productList.addAll(newProductList)
@@ -41,7 +40,7 @@ class MyItemRecyclerViewAdapter(private val context: Context,private val onClick
             .load(item.thumbnail)
             .into(holder.img)
         holder.idView.text = item.itemName
-        holder.contentView.text = context.getString(R.string.currencyAndPrice,item.currency,item.price)
+        holder.contentView.text = item.currency +" "+item.price
         holder.itemView.setOnClickListener {
             onClickListener.onClick(item)
         }
