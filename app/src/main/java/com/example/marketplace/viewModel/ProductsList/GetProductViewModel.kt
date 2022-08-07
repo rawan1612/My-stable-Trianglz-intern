@@ -5,20 +5,21 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.marketplace.model.DataModelInterface
 import com.example.marketplace.model.RepositoryInterface
-import com.example.marketplace.model.Response
 import kotlinx.coroutines.*
 
 class GetProductViewModel(private val repository: RepositoryInterface): ViewModel() {
-    private val allProductListMutableLiveData : MutableLiveData<List<Response>> = MutableLiveData()
-    val allProductListLiveData : LiveData<List<Response>> = allProductListMutableLiveData
-    private val filterdProductListMutableLiveData : MutableLiveData<List<Response>> = MutableLiveData()
-    val filterdProductListLiveData : LiveData<List<Response>> = filterdProductListMutableLiveData
+    private val allProductListMutableLiveData : MutableLiveData<List<DataModelInterface.Response>> = MutableLiveData()
+    val allProductListLiveData : LiveData<List<DataModelInterface.Response>> = allProductListMutableLiveData
+    private val filterdProductListMutableLiveData : MutableLiveData<List<DataModelInterface.Response>> = MutableLiveData()
+    val filterdProductListLiveData : LiveData<List<DataModelInterface.Response>> = filterdProductListMutableLiveData
     init {
         getAllProduct()
     }
 
     fun getAllProduct() {
+        Log.i("TAG", "Load  Data: ")
         viewModelScope.launch(Dispatchers.IO) {
             val response = repository.getProducts()
                 delay(2000)

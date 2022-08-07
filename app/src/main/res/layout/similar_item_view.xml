@@ -17,6 +17,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:text="@string/similar_items"/>
 <androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/similar_items_Recycler"
     android:layout_width="match_parent"
     android:layout_marginTop="10dp"
     android:layout_height="200dp"

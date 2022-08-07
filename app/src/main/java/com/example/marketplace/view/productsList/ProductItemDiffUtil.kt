@@ -1,10 +1,10 @@
 package com.example.marketplace.view.productsList
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.marketplace.model.Response
+import com.example.marketplace.model.DataModelInterface
 
-class ProductItemDiffUtil(private val oldList : List<Response>,
-                          private val newList : List<Response>
+class ProductItemDiffUtil(private val oldList : List<DataModelInterface.Response>,
+                          private val newList : List<DataModelInterface.Response>
 ) : DiffUtil.Callback() {
 
     override fun getNewListSize(): Int {
@@ -16,14 +16,14 @@ class ProductItemDiffUtil(private val oldList : List<Response>,
     }
 
     override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        return oldList[oldItemPosition].productId == newList[newItemPosition].productId
+        return oldList[oldItemPosition].productInfo?.productId == newList[newItemPosition].productInfo?.productId
     }
 
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
        return when {
-           oldList[oldItemPosition].productId != newList[newItemPosition].productId -> { false }
-           oldList[oldItemPosition].price != newList[newItemPosition].price -> { false }
-           oldList[oldItemPosition].currency != newList[newItemPosition].currency -> { false }
+           oldList[oldItemPosition].productInfo?.productId != newList[newItemPosition].productInfo?.productId -> { false }
+           oldList[oldItemPosition].productInfo?.price != newList[newItemPosition].productInfo?.price -> { false }
+           oldList[oldItemPosition].productInfo?.currency != newList[newItemPosition].productInfo?.currency -> { false }
            else -> true
        }
     }

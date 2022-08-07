@@ -11,18 +11,18 @@ import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.marketplace.R
-import com.example.marketplace.databinding.FragmentItemListBinding
+import com.example.marketplace.databinding.FragmetListOfProductsBinding
 import com.example.marketplace.localSource.Client
+import com.example.marketplace.model.DataModelInterface
 import com.example.marketplace.model.Repository
-import com.example.marketplace.model.Response
 import com.example.marketplace.viewModel.ProductsList.GetProductViewModel
 import com.example.marketplace.viewModel.ProductsList.GetProductsViewModelFactory
 import com.google.android.material.tabs.TabLayout
 
 class ListOfProductFragment : Fragment() {
     private var columnCount = 2
-    private var allProductsList: List<Response> = listOf()
-    private var filteredList: MutableList<Response> = arrayListOf()
+    private var allProductsList: List<DataModelInterface.Response> = listOf()
+    private var filteredList: MutableList<DataModelInterface.Response> = arrayListOf()
     private lateinit var  txt :  TextView
     private val productAdapter by lazy {
         ProductItemListRecyclerViewAdapter(
@@ -38,7 +38,7 @@ class ListOfProductFragment : Fragment() {
             )
         )[GetProductViewModel::class.java]
     }
-    private val binding by lazy { FragmentItemListBinding.inflate(layoutInflater) }
+    private val binding by lazy { FragmetListOfProductsBinding.inflate(layoutInflater) }
     private lateinit var dialog: Dialog
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,7 +46,6 @@ class ListOfProductFragment : Fragment() {
             dialog = Dialog(requireContext())
         }
         dialog.setContentView(R.layout.progress_dialog)
-        viewModel.getAllProduct()
         dialog.show()
     }
 
@@ -56,6 +55,86 @@ class ListOfProductFragment : Fragment() {
     ): View? {
         val view = binding.root
         val recycle = binding.list
+        setUpTabLayout()
+        viewModel.getAllProduct()
+
+        // Set the adapter
+        with(recycle) {
+            layoutManager =  GridLayoutManager(this.context, columnCount)
+            viewModel.allProductListLiveData.observe(viewLifecycleOwner) {
+                if (!viewModel.allProductListLiveData.value.isNullOrEmpty()) {
+                    dialog.dismiss()
+                    recycle.adapter = productAdapter
+                    productAdapter.setProductList(it)
+                    allProductsList = it
+                }
+
+            }
+        }
+        return view
+    }
+
+    private fun filterTrading(): List<DataModelInterface.Response> {
+        dialog.show()
+            viewModel.getProductsByCategory("trading")
+            viewModel.filterdProductListLiveData.observe(viewLifecycleOwner) {
+                if (viewModel.filterdProductListLiveData.value!!.isNotEmpty()) {
+                    invisibleNoProductsViewItems()
+                    dialog.dismiss()
+                    filteredList = it.toMutableList()
+                    productAdapter.setProductList(filteredList)
+                }
+                else {
+                    dialog.dismiss()
+                    productAdapter.setProductList(emptyList())
+                    binding.apply {
+                        list.visibility = View.INVISIBLE
+                        notAvailableLocation.visibility = View.VISIBLE
+                        noItemTextView.visibility = View.VISIBLE
+                        noProduct.visibility = View.VISIBLE
+                    }
+                }
+            }
+        return filteredList
+    }
+
+    private fun filterEquipment(): List<DataModelInterface.Response> {
+        dialog.show()
+        viewModel.getProductsByCategory("usedEqu")
+            viewModel.filterdProductListLiveData.observe(viewLifecycleOwner) {
+                if (viewModel.filterdProductListLiveData.value!!.isNotEmpty()) {
+                    invisibleNoProductsViewItems()
+                    dialog.dismiss()
+                    filteredList = it.toMutableList()
+                    productAdapter.setProductList(filteredList)
+                }
+                else{
+                    dialog.dismiss()
+                  //  productAdapter.setProductList(emptyList())
+                    binding.apply {
+                        list.visibility = View.INVISIBLE
+                        notAvailableLocation.visibility = View.VISIBLE
+                        noItemTextView.visibility = View.VISIBLE
+                        noProduct.visibility = View.VISIBLE
+                    }
+          }
+            }
+        return filteredList
+    }
+    private fun goToDetails(response : DataModelInterface.Response){
+        val action = ListOfProductFragmentDirections.actionItemFragmentToProductDetails(response)
+        findNavController().navigate(action)
+    }
+    private fun invisibleNoProductsViewItems(){
+        binding.apply {
+            list.visibility = View.VISIBLE
+            notAvailableLocation.visibility = View.INVISIBLE
+            noItemTextView.visibility = View.INVISIBLE
+            noProduct.visibility = View.INVISIBLE
+        }
+    }
+
+    private fun setUpTabLayout(){
         val tabLayout = binding.tabs
         tabLayout.addTab(tabLayout.newTab().setText(R.string.allTab))
         tabLayout.addTab(tabLayout.newTab().setText(R.string.horseTradingTab))
@@ -92,6 +171,9 @@ class ListOfProductFragment : Fragment() {
 
         )
 
+    }
+    private fun setUpAllProductsList(){
+        val recycle = binding.list
         // Set the adapter
         with(recycle) {
             layoutManager =  GridLayoutManager(this.context, columnCount)
@@ -104,67 +186,6 @@ class ListOfProductFragment : Fragment() {
                 }
 
             }
-        }
-        return view
-    }
-
-    private fun filterTrading(): List<Response> {
-        dialog.show()
-            viewModel.getProductsByCategory("trading")
-            viewModel.filterdProductListLiveData.observe(viewLifecycleOwner) {
-                if (viewModel.filterdProductListLiveData.value!!.isNotEmpty()) {
-                    invisibleNoProductsViewItems()
-                    dialog.dismiss()
-                    filteredList = it.toMutableList()
-                    productAdapter.setProductList(filteredList)
-                }
-                else {
-                    dialog.dismiss()
-                    productAdapter.setProductList(emptyList())
-                    binding.apply {
-                        list.visibility = View.INVISIBLE
-                        notAvailableLocation.visibility = View.VISIBLE
-                        noItemTextView.visibility = View.VISIBLE
-                        noProduct.visibility = View.VISIBLE
-                    }
-                }
-            }
-        return filteredList
-    }
-
-    private fun filterEquipment(): List<Response> {
-        dialog.show()
-        viewModel.getProductsByCategory("usedEqu")
-            viewModel.filterdProductListLiveData.observe(viewLifecycleOwner) {
-                if (viewModel.filterdProductListLiveData.value!!.isNotEmpty()) {
-                    invisibleNoProductsViewItems()
-                    dialog.dismiss()
-                    filteredList = it.toMutableList()
-                    productAdapter.setProductList(filteredList)
-                }
-                else{
-                    dialog.dismiss()
-                  //  productAdapter.setProductList(emptyList())
-                    binding.apply {
-                        list.visibility = View.INVISIBLE
-                        notAvailableLocation.visibility = View.VISIBLE
-                        noItemTextView.visibility = View.VISIBLE
-                        noProduct.visibility = View.VISIBLE
-                    }
-          }
-            }
-        return filteredList
-    }
-    private fun goToDetails(response : Response){
-        val action = ListOfProductFragmentDirections.actionItemFragmentToProductDetails(response)
-        findNavController().navigate(action)
-    }
-    private fun invisibleNoProductsViewItems(){
-        binding.apply {
-            list.visibility = View.VISIBLE
-            notAvailableLocation.visibility = View.INVISIBLE
-            noItemTextView.visibility = View.INVISIBLE
-            noProduct.visibility = View.INVISIBLE
         }
     }
 }

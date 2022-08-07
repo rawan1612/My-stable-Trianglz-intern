@@ -7,7 +7,7 @@ import kotlinx.android.parcel.Parcelize
 import java.time.DayOfWeek
 import java.time.Month
 import java.time.Year
-
+/**
 @Parcelize
 data class Response(
     val productId : Double = 0.0,
@@ -58,3 +58,4 @@ data class HorseInfo(
     val hBreed : String = "",
     val hStrain : String = ""
 ): Parcelable
+*/

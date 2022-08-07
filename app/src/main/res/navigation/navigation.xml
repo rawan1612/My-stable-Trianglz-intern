@@ -34,6 +34,6 @@
             app:popUpToInclusive="true" />
         <argument
             android:name="responseItem"
-            app:argType="com.example.marketplace.model.Response" />
+            app:argType="com.example.marketplace.model.DataModelInterface$Response" />
     </fragment>
 </navigation>

@@ -23,7 +23,7 @@
     </View>
 
     <TextView
-        android:id="@+id/item_number"
+        android:id="@+id/item_name"
         android:layout_width="wrap_content"
         android:layout_height="19dp"
         android:layout_marginStart="12.5dp"
@@ -37,7 +37,7 @@
         tools:text="Denver" />
 
     <TextView
-        android:id="@+id/content"
+        android:id="@+id/item_price"
         android:layout_width="wrap_content"
         android:layout_height="14dp"
         android:layout_marginStart="12.5dp"

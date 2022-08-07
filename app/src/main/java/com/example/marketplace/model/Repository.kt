@@ -12,10 +12,10 @@ class Repository private constructor(var localSource: LocalSource):RepositoryInt
                 localSource)
         }
     }
-    override suspend fun getProducts(): List<Response> {
+    override suspend fun getProducts(): List<DataModelInterface.Response> {
         return localSource.getProducts()
     }
-    override suspend fun getProductsByCategory(selectedCategory :String):List<Response>{
+    override suspend fun getProductsByCategory(selectedCategory :String):List<DataModelInterface.Response>{
         return localSource.getProductsByCategory(selectedCategory)
     }
 }

@@ -1,14 +1,7 @@
 package com.example.marketplace.localSource
 
-import android.app.Activity
-import android.util.Log
-import com.example.marketplace.R
+import com.example.marketplace.model.DataModelInterface
 import com.example.marketplace.model.FakeData
-import com.example.marketplace.model.Response
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 class Client : LocalSource {
     companion object {
@@ -18,14 +11,14 @@ class Client : LocalSource {
         }
     }
 
-    private var allProducts: List<Response> = listOf()
-    private var filterdList: List<Response> = emptyList()
-    override suspend fun getProducts(): List<Response> {
+    private var allProducts: List<DataModelInterface.Response> = listOf()
+    private var filterdList: List<DataModelInterface.Response> = emptyList()
+    override suspend fun getProducts(): List<DataModelInterface.Response> {
         allProducts = FakeData.response
         return allProducts
     }
 
-    override suspend fun getProductsByCategory(selectedCategory: String): List<Response> {
+    override suspend fun getProductsByCategory(selectedCategory: String): List<DataModelInterface.Response> {
         if (selectedCategory == "trading") {
                 filterdList = FakeData.horseTradingList
         }
