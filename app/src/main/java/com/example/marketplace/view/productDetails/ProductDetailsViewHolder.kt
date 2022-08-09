@@ -3,33 +3,42 @@ package com.example.marketplace.view.productDetails
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
 import android.widget.Toast
-import androidx.fragment.app.FragmentManager
+import androidx.navigation.Navigation
+import androidx.navigation.Navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.marketplace.R
 import com.example.marketplace.model.DataModelInterface
-import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.OnMapReadyCallback
-import com.google.android.gms.maps.SupportMapFragment
+import com.example.marketplace.view.productsList.ListOfProductFragmentDirections
+import com.example.marketplace.view.productsList.OnClickListenerProduct
+import com.example.marketplace.view.productsList.SimilarItemListRecyclerViewAdapter
+import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import java.text.DateFormatSymbols
 
-class ProductDetailsViewHolder(itemView: View , context: Context,fragmentManager: FragmentManager) : RecyclerView.ViewHolder(itemView) ,
+class ProductDetailsViewHolder(itemView: View , context: Context) : RecyclerView.ViewHolder(itemView) ,
     OnMapReadyCallback {
     val context : Context = context
-    val fragmentManager = fragmentManager
     private val productImagesAdapter by lazy { ProductItemImageRecyclerViewAdapter(context) }
+    private val similarProducts by lazy { SimilarItemListRecyclerViewAdapter(context,
+        OnClickListenerProduct { response -> goToDetails(response) })}
+
+    private fun goToDetails(response: DataModelInterface.Response) {
+        val action = ProductDetailsFragmentDirections.actionProductDetailsSelf(response,response.productInfo!!.category)
+            Navigation.findNavController(itemView).navigate(action)
+
+    }
+
     private var listOfProductImages = mutableListOf<String>()
     private lateinit var latLng : LatLng
+
 
     private fun bindProductData(item: DataModelInterface.ProductInfo) {
         val productName = itemView.findViewById<TextView>(R.id.product_name)
@@ -38,7 +47,7 @@ class ProductDetailsViewHolder(itemView: View , context: Context,fragmentManager
         val details = itemView.findViewById<TextView>(R.id.details)
         val recycle = itemView.findViewById<RecyclerView>(R.id.images_list)
 
-        val productSoldOut = itemView?.findViewById<RelativeLayout>(R.id.product_sold_out)
+        val productSoldOut = itemView.findViewById<RelativeLayout>(R.id.product_sold_out)
         if(item.isAvailable){
             productSoldOut?.visibility = View.GONE
         }else{
@@ -75,9 +84,8 @@ class ProductDetailsViewHolder(itemView: View , context: Context,fragmentManager
         val ownerImg = itemView.findViewById<ImageView>(R.id.owner_img)
         Glide.with(context)
             .load(item.profileImg)
-            .override(300, 200)
             .placeholder(R.drawable.profile_img_placeholder)
-            .fitCenter()
+            .centerCrop()
             .into(ownerImg)
         ownerName?.text = item.name
         ownerPhone?.setOnClickListener {
@@ -98,8 +106,12 @@ class ProductDetailsViewHolder(itemView: View , context: Context,fragmentManager
         }
     }
     private fun bindLocationData(item: DataModelInterface.Place){
-        Log.i("TAG", "bindLocationData: ")
-        fetchLocation()
+        val map : MapView = itemView.findViewById(R.id.map_view) as MapView
+        GoogleMapOptions()
+            .liteMode(true)
+        map.onCreate(null)
+        map.onResume()
+        map.getMapAsync(this)
         latLng = LatLng(item.latitude, item.longitude)
         val address = itemView.findViewById<TextView>(R.id.location_description)
         address.text = item.address
@@ -121,15 +133,30 @@ class ProductDetailsViewHolder(itemView: View , context: Context,fragmentManager
         horseDOB?.text = item.hDOB
 
     }
+
+     private fun bindSimilarData(item: DataModelInterface.SimilarProducts){
+        val recycleSimilarProducts = itemView.findViewById<RecyclerView>(R.id.similar_items_Recycler)
+        with(recycleSimilarProducts) {
+            val linearLayoutManager = LinearLayoutManager(itemView.context)
+            linearLayoutManager.orientation = androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
+            this?.layoutManager = linearLayoutManager
+            this?.setHasFixedSize(true)
+            this?.adapter = similarProducts
+            item.similarProducts?.let { similarProducts.setProductList(it) }
+        }
+
+    }
+
     fun bind(dataModel: DataModelInterface) {
         when (dataModel) {
             is DataModelInterface.ProductInfo -> bindProductData(dataModel)
             is DataModelInterface.Owner -> bindOwnerData(dataModel)
             is DataModelInterface.Place -> bindLocationData(dataModel)
             is DataModelInterface.HorseInfo -> bindHorseData(dataModel)
+            is DataModelInterface.SimilarProducts -> bindSimilarData(dataModel)
+
         }
     }
-
 
 private fun getMonth(month: Int): String {
     return DateFormatSymbols().months[month - 1]
@@ -154,19 +181,9 @@ private fun sendMail(email: String) {
 }
 
     override fun onMapReady(googleMap: GoogleMap) {
-        Log.i("TAG", "onMapReady: $latLng")
         val markerOptions = MarkerOptions().position(latLng)
         googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng))
         googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 5f))
         googleMap.addMarker(markerOptions)
-    }
-        private fun fetchLocation() {
-
-        val supportMapFragment =
-            fragmentManager.findFragmentById(R.id.map_fragment) as SupportMapFragment?
-            Log.i("TAG", "fetchLocation: $supportMapFragment")
-            Log.i("TAG", "fetchLocation: $fragmentManager ")
-        supportMapFragment?.getMapAsync(this)
-
     }
 }

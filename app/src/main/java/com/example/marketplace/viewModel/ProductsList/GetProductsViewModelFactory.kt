@@ -10,7 +10,7 @@ class GetProductsViewModelFactory(private val repo: RepositoryInterface): ViewMo
         return if (modelClass.isAssignableFrom(GetProductViewModel::class.java)) {
             GetProductViewModel(repo) as T
         } else {
-            throw IllegalArgumentException("AddToFavoriteViewModel Class not found")
+            throw IllegalArgumentException("GetProductsViewModelFactory Class not found")
         }
     }
 }

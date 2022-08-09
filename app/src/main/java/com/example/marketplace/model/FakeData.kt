@@ -24,7 +24,7 @@ companion object {
             longitude = 31.2,
             address = "gamal abd elnaser street "
         ),
-        seller = DataModelInterface.Owner(name = "Rawan", phoneNumber = 1550474808, email = "rbahnasy98@gmail.com",profileImg = "https://cdn.dribbble.com/users/2313212/screenshots/11256142/media/27b57b3ee2ac221dc8c616d02161d96b.jpg?compress=1&resize=400x300&vertical=top"),
+        seller = DataModelInterface.Owner(name = "Rawan", phoneNumber = 1550474808, email = "rbahnasy98@gmail.com",profileImg = "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Dylan_O%27Brien_in_2017_by_Gage_Skidmore.jpg/800px-Dylan_O%27Brien_in_2017_by_Gage_Skidmore.jpg"),
         horseInfo = DataModelInterface.HorseInfo(
             hName = "Denver",
             hColor = "White",

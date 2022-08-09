@@ -2,6 +2,7 @@ package com.example.marketplace.view.productsList
 
 import android.app.Dialog
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import android.view.LayoutInflater
@@ -23,7 +24,7 @@ class ListOfProductFragment : Fragment() {
     private var columnCount = 2
     private var allProductsList: List<DataModelInterface.Response> = listOf()
     private var filteredList: MutableList<DataModelInterface.Response> = arrayListOf()
-    private lateinit var  txt :  TextView
+    private var selectedCategory : String = "all"
     private val productAdapter by lazy {
         ProductItemListRecyclerViewAdapter(
             requireContext(), OnClickListenerProduct { response -> goToDetails(response) }
@@ -47,6 +48,8 @@ class ListOfProductFragment : Fragment() {
         }
         dialog.setContentView(R.layout.progress_dialog)
         dialog.show()
+        viewModel.getAllProduct()
+
     }
 
     override fun onCreateView(
@@ -54,31 +57,15 @@ class ListOfProductFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = binding.root
-        val recycle = binding.list
         setUpTabLayout()
-        viewModel.getAllProduct()
-
-        // Set the adapter
-        with(recycle) {
-            layoutManager =  GridLayoutManager(this.context, columnCount)
-            viewModel.allProductListLiveData.observe(viewLifecycleOwner) {
-                if (!viewModel.allProductListLiveData.value.isNullOrEmpty()) {
-                    dialog.dismiss()
-                    recycle.adapter = productAdapter
-                    productAdapter.setProductList(it)
-                    allProductsList = it
-                }
-
-            }
-        }
         return view
     }
 
     private fun filterTrading(): List<DataModelInterface.Response> {
         dialog.show()
             viewModel.getProductsByCategory("trading")
-            viewModel.filterdProductListLiveData.observe(viewLifecycleOwner) {
-                if (viewModel.filterdProductListLiveData.value!!.isNotEmpty()) {
+            viewModel.filteredProductListLiveData.observe(viewLifecycleOwner) {
+                if (viewModel.filteredProductListLiveData.value!!.isNotEmpty()) {
                     invisibleNoProductsViewItems()
                     dialog.dismiss()
                     filteredList = it.toMutableList()
@@ -97,12 +84,11 @@ class ListOfProductFragment : Fragment() {
             }
         return filteredList
     }
-
     private fun filterEquipment(): List<DataModelInterface.Response> {
         dialog.show()
         viewModel.getProductsByCategory("usedEqu")
-            viewModel.filterdProductListLiveData.observe(viewLifecycleOwner) {
-                if (viewModel.filterdProductListLiveData.value!!.isNotEmpty()) {
+            viewModel.filteredProductListLiveData.observe(viewLifecycleOwner) {
+                if (viewModel.filteredProductListLiveData.value!!.isNotEmpty()) {
                     invisibleNoProductsViewItems()
                     dialog.dismiss()
                     filteredList = it.toMutableList()
@@ -110,7 +96,6 @@ class ListOfProductFragment : Fragment() {
                 }
                 else{
                     dialog.dismiss()
-                  //  productAdapter.setProductList(emptyList())
                     binding.apply {
                         list.visibility = View.INVISIBLE
                         notAvailableLocation.visibility = View.VISIBLE
@@ -122,7 +107,7 @@ class ListOfProductFragment : Fragment() {
         return filteredList
     }
     private fun goToDetails(response : DataModelInterface.Response){
-        val action = ListOfProductFragmentDirections.actionItemFragmentToProductDetails(response)
+        val action = ListOfProductFragmentDirections.actionItemFragmentToProductDetails(response,selectedCategory)
         findNavController().navigate(action)
     }
     private fun invisibleNoProductsViewItems(){
@@ -142,13 +127,29 @@ class ListOfProductFragment : Fragment() {
         tabLayout.addTab(tabLayout.newTab().setText(R.string.usedEquipmentTab))
         tabLayout.addTab(tabLayout.newTab().setText(R.string.usedEquipmentTab))
         tabLayout.addTab(tabLayout.newTab().setText(R.string.usedEquipmentTab))
-
+        var position = tabLayout.selectedTabPosition
+        setUpAllProductsList(position)
+        when (position){
+            1 -> { productAdapter.setProductList(filteredList); selectedCategory = "trading"}
+            2 -> { productAdapter.setProductList(filteredList) ; selectedCategory = "usedEqu" }
+        }
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
+
                 when (tab?.text) {
-                    activity?.getString(R.string.allTab) -> productAdapter.setProductList(allProductsList)
-                    activity?.getString(R.string.horseTradingTab) -> filterTrading()
-                    activity?.getString(R.string.usedEquipmentTab) -> filterEquipment()
+                    activity?.getString(R.string.allTab) -> {
+                        productAdapter.setProductList(allProductsList)
+                        selectedCategory = "all"
+                    }
+                    activity?.getString(R.string.horseTradingTab) -> {
+                        filterTrading()
+                        selectedCategory = "trading"
+                    }
+                    activity?.getString(R.string.usedEquipmentTab) -> {
+                        filterEquipment()
+                        selectedCategory = "usedEqu"
+
+                    }
                 }
             }
 
@@ -172,7 +173,7 @@ class ListOfProductFragment : Fragment() {
         )
 
     }
-    private fun setUpAllProductsList(){
+    private fun setUpAllProductsList(position: Int){
         val recycle = binding.list
         // Set the adapter
         with(recycle) {
@@ -181,8 +182,10 @@ class ListOfProductFragment : Fragment() {
                 if (!viewModel.allProductListLiveData.value.isNullOrEmpty()) {
                     dialog.dismiss()
                     recycle.adapter = productAdapter
-                    productAdapter.setProductList(it)
-                    allProductsList = it
+                   if (position==0) {
+                       productAdapter.setProductList(it)
+                       allProductsList = it
+                   }
                 }
 
             }

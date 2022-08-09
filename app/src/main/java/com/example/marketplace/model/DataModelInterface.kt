@@ -59,4 +59,8 @@ interface DataModelInterface {
         val hBreed : String = "",
         val hStrain : String = ""
     ): Parcelable , DataModelInterface
+
+    data class SimilarProducts(
+        var similarProducts : List<Response>? = null
+    ): DataModelInterface
 }

@@ -35,5 +35,11 @@
         <argument
             android:name="responseItem"
             app:argType="com.example.marketplace.model.DataModelInterface$Response" />
+        <argument
+            android:name="category"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_productDetails_self"
+            app:destination="@id/productDetails" />
     </fragment>
 </navigation>

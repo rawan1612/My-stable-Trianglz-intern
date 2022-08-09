@@ -1,6 +1,7 @@
 package com.example.marketplace.view.productsList
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView

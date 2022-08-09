@@ -43,6 +43,7 @@
             android:lineSpacingExtra="4sp"
             android:text="This ad ends in 23 March"
             android:textColor="@color/dark_50"
+            android:gravity="right"
             android:textSize="12sp" />
     </LinearLayout>
 
