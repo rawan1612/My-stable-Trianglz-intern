@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/itemFragment">
+
+    <fragment
+        android:id="@+id/itemFragment"
+        android:name="com.example.marketplace.view.productsList.ListOfProductFragment"
+        android:label="fragment_item_list"
+        tools:layout="@layout/fragmet_list_of_products" >
+        <argument
+            android:name="country"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_itemFragment_to_productDetails"
+            app:destination="@id/productDetails" />
+    </fragment>
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.example.marketplace.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
+    <fragment
+        android:id="@+id/productDetails"
+        android:name="com.example.marketplace.view.productDetails.ProductDetailsFragment"
+        android:label="fragment_product_details"
+        tools:layout="@layout/fragment_product_details" >
+        <action
+            android:id="@+id/action_productDetails_to_itemFragment"
+            app:destination="@id/itemFragment"
+            app:popUpTo="@id/itemFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="responseItem"
+            app:argType="com.example.marketplace.model.DataModelInterface$Response" />
+        <argument
+            android:name="category"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_productDetails_self"
+            app:destination="@id/productDetails" />
+    </fragment>
+</navigation>
