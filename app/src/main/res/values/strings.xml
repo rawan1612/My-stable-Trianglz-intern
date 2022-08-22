@@ -29,5 +29,7 @@
     <string name="owner">Owner</string>
     <string name="Sold_out">Sold out</string>
     <string name="similar_items">Similar items</string>
+    <string name="GOOGLE_MAPS_API_KEY">AIzaSyDsfZghSLFcbud2vqF2ZDVhpkPTa4_Z2XU</string>
+"
 
 </resources>
