@@ -1,28 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="22.5dp"
-    android:layout_marginTop="20dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:layout_marginTop="20dp">
+
     <TextView
+        android:id="@+id/similar_items_TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/similar_items_TextView"
+        android:layout_marginStart="22dp"
         android:fontFamily="@font/sfp_bold"
-        android:textSize="16sp"
+        android:text="@string/similar_items"
         android:textColor="@color/dark"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="@string/similar_items"/>
-<androidx.recyclerview.widget.RecyclerView
-    android:id="@+id/similar_items_Recycler"
+        app:layout_constraintTop_toTopOf="parent" />
+<FrameLayout
     android:layout_width="match_parent"
-    android:layout_marginTop="10dp"
-    android:layout_height="200dp"
-    tools:listitem="@layout/item_similar_products"
+    android:layout_height="wrap_content"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@id/similar_items_TextView">
-</androidx.recyclerview.widget.RecyclerView>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/similar_items_Recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:clipToPadding="false"
+        android:paddingStart="22dp"
+        android:paddingEnd="22dp"
+        tools:listitem="@layout/item_similar_products" />
+</FrameLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

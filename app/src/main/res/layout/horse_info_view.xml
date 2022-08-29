@@ -1,259 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-   android:id="@+id/horse_info_view"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/horse_info_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:layout_marginStart="22.5dp"
-    android:layout_marginEnd="22.5dp"
-    android:layout_marginTop="20dp"
-    android:layout_marginBottom="22.5dp">
+    android:layout_marginHorizontal="22dp"
+    android:layout_marginVertical="16dp">
+
     <TextView
+        android:id="@+id/horse_info_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/horse_info"
         android:fontFamily="@font/sfp_semibold"
-        android:textSize="15sp"
-        android:textColor="@color/dark">
+        android:paddingBottom="10dp"
+        android:text="@string/horse_info"
+        android:textAlignment="viewStart"
+        android:textColor="@color/dark"
+        android:textSize="16sp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@id/key"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    </TextView>
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/key"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        android:weightSum="2">
+        android:fontFamily="@font/sfp_regular"
+        android:text="@string/Horse_Name"
+        android:textAlignment="viewStart"
+        android:textColor="@color/cool_grey"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/horse_info_label" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/Horse_Name"
-            android:fontFamily="@font/sfp_regular"
-            android:textSize="15sp"
-            android:lineHeight="20sp"
-            android:textColor="@color/cool_grey"
-            android:layout_weight="1" />
-
-        <TextView
-            android:id="@+id/horse_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Denver"
-            android:layout_weight="1"
-            android:fontFamily="@font/sfp_semibold"
-            android:textSize="15sp"
-            android:lineHeight="20sp"
-            android:textColor="@color/dark"
-            android:gravity="right" />
-    </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/path_2">
-    </View>
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/value"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="2">
+        android:fontFamily="@font/sfp_regular"
+        android:textAlignment="viewEnd"
+        android:textColor="@color/cool_grey"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/key"
+        app:layout_constraintTop_toBottomOf="@id/horse_info_label"
+        tools:text="Denver" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/Horse_Color"
-            android:fontFamily="@font/sfp_regular"
-            android:textSize="15sp"
-            android:lineHeight="20sp"
-            android:textColor="@color/cool_grey"
-            android:layout_weight="1" />
-
-        <TextView
-            android:id="@+id/horse_color"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Gray"
-            android:layout_weight="1"
-            android:fontFamily="@font/sfp_semibold"
-            android:textSize="15sp"
-            android:lineHeight="20sp"
-            android:textColor="@color/dark"
-            android:gravity="right" />
-    </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/path_2">
-    </View>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="2">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/Horse_Sex_type"
-            android:fontFamily="@font/sfp_regular"
-            android:textSize="15sp"
-            android:lineHeight="20sp"
-            android:textColor="@color/cool_grey"
-            android:layout_weight="1" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/horse_type"
-            android:text="Male"
-            android:layout_weight="1"
-            android:fontFamily="@font/sfp_semibold"
-            android:textSize="15sp"
-            android:lineHeight="20sp"
-            android:textColor="@color/dark"
-            android:gravity="right" />
-    </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/path_2">
-    </View>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="2">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/Horse_Gender"
-            android:fontFamily="@font/sfp_regular"
-            android:textSize="15sp"
-            android:lineHeight="20sp"
-            android:textColor="@color/cool_grey"
-            android:layout_weight="1" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/horse_gender"
-            android:text="Gender"
-            android:layout_weight="1"
-            android:fontFamily="@font/sfp_semibold"
-            android:textSize="15sp"
-            android:lineHeight="20sp"
-            android:textColor="@color/dark"
-            android:gravity="right" />
-    </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/path_2">
-    </View>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="2">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/DOF"
-            android:fontFamily="@font/sfp_regular"
-            android:textSize="15sp"
-            android:lineHeight="20sp"
-            android:textColor="@color/cool_grey"
-            android:layout_weight="1" />
-
-        <TextView
-            android:id="@+id/HDOB"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="12 Jan,2021"
-            android:layout_weight="1"
-            android:fontFamily="@font/sfp_semibold"
-            android:textSize="15sp"
-            android:lineHeight="20sp"
-            android:textColor="@color/dark"
-            android:gravity="right" />
-    </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/path_2">
-    </View>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="2">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/Horse_Breed"
-            android:fontFamily="@font/sfp_regular"
-            android:textSize="15sp"
-            android:lineHeight="20sp"
-            android:textColor="@color/cool_grey"
-            android:layout_weight="1" />
-
-        <TextView
-            android:id="@+id/horse_breed"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Horse Breed"
-            android:layout_weight="1"
-            android:fontFamily="@font/sfp_semibold"
-            android:textSize="15sp"
-            android:lineHeight="20sp"
-            android:textColor="@color/dark"
-            android:gravity="right" />
-    </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/path_2">
-    </View>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="2">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/Horse_Strain"
-            android:fontFamily="@font/sfp_regular"
-            android:textSize="15sp"
-            android:lineHeight="20sp"
-            android:textColor="@color/cool_grey"
-            android:layout_weight="1" />
-
-        <TextView
-            android:id="@+id/horse_strain"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Horse Strain"
-            android:layout_weight="1"
-            android:fontFamily="@font/sfp_semibold"
-            android:textSize="15sp"
-            android:lineHeight="20sp"
-            android:textColor="@color/dark"
-            android:gravity="right" />
-    </LinearLayout>
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

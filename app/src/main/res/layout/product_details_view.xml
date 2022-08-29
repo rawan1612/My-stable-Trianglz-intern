@@ -1,106 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="22.5dp"
-    android:layout_marginTop="10dp"
-    android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="10dp">
 
     <TextView
         android:id="@+id/product_name"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fontFamily="@font/sfp_bold"
-        android:lineHeight="30sp"
-        android:text="Denver"
-        android:textColor="@color/dark"
-        android:textSize="25sp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal">
+        android:layout_marginStart="22dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textAlignment="viewStart"
+        android:fontFamily="@font/sfp_bold"
+        android:textColor="@color/dark"
+        android:lines="1"
+        android:textSize="25sp"
+        tools:text="Denver" />
 
-        <TextView
-            android:id="@+id/product_price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/sfp_bold"
-            android:lineHeight="160dp"
-            android:lineSpacingExtra="4sp"
-            android:text="KWD 7500"
-            android:textColor="@color/darkBeige"
-            android:textSize="14sp" />
 
-        <TextView
-            android:id="@+id/publish_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:fontFamily="@font/sfp_regular"
-            android:lineSpacingExtra="4sp"
-            android:text="This ad ends in 23 March"
-            android:textColor="@color/dark_50"
-            android:gravity="right"
-            android:textSize="12sp" />
-    </LinearLayout>
+    <TextView
+        android:id="@+id/product_price_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/product_name"
+        app:layout_constraintTop_toBottomOf="@id/product_name"
+        android:layout_marginVertical="10dp"
+        android:textAlignment="viewStart"
+        android:fontFamily="@font/sfp_bold"
+        android:textColor="@color/dark_Beige"
+        android:textSize="14sp"
+        tools:text="KWD 7500" />
+
+    <TextView
+        android:id="@+id/publish_date_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:fontFamily="@font/sfp_regular"
+        app:layout_constraintStart_toEndOf="@id/product_price_tv"
+        app:layout_constraintTop_toTopOf="@id/product_price_tv"
+        android:textAlignment="viewStart"
+        android:lineSpacingExtra="4sp"
+        android:textColor="@color/dark_50"
+        android:textSize="12sp"
+        tools:text="This ad ends in 23 March" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/images_list"
+        android:id="@+id/images_list_RV"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:clipToPadding="false"
+        android:paddingStart="22dp"
+        android:layout_height="wrap_content"
+        tools:layout_height="200dp"
         android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/product_price_tv"
+        app:layout_constraintStart_toStartOf="parent"
         android:orientation="horizontal"
         tools:context=".view.productDetails.ProductDetailsFragment"
         tools:listitem="@layout/image_list_item" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:id="@+id/details_label"
         android:fontFamily="@font/sfp_semibold"
+        app:layout_constraintTop_toBottomOf="@id/images_list_RV"
+        app:layout_constraintStart_toStartOf="@id/product_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textAlignment="viewStart"
         android:text="@string/details"
         android:textColor="@color/dark"
         android:textSize="15sp" />
 
     <TextView
-        android:id="@+id/details"
+        android:id="@+id/details_desc_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAlignment="viewStart"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="22.5dp"
+        android:layout_marginEnd="22dp"
+        app:layout_constraintStart_toStartOf="@id/details_label"
+        app:layout_constraintTop_toBottomOf="@id/details_label"
         android:fontFamily="@font/sfp_regular"
-        android:text="Lorem Ipsum is simply dummy text of the print and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown ."
         android:textColor="@color/dark_87"
-        android:textSize="15sp" />
-    <RelativeLayout
-        android:id="@+id/product_sold_out"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:paddingRight="22.5dp"
-        android:layout_gravity="center"
-        android:visibility="visible">
+        android:textSize="16sp"
+        tools:text="Lorem Ipsum is simply dummy text of the print and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown ." />
 
-        <View
+        <Button
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@drawable/sold_out_rect" />
-
-        <TextView
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:gravity="center"
+            android:layout_marginHorizontal="22dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/product_sold_out_btn"
+            android:backgroundTint="@color/very_Light_Brown"
+            app:layout_constraintTop_toBottomOf="@id/details_desc_tv"
+            android:theme="@drawable/sold_out_rect"
             android:layout_marginTop="16dp"
-            android:textSize="15sp"
             android:fontFamily="@font/sfp_bold"
+            android:gravity="center"
+            android:text="@string/Sold_out"
             android:textColor="@color/white"
-            android:text="@string/Sold_out" />
-    </RelativeLayout>
+            android:textSize="15sp" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

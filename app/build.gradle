@@ -4,7 +4,6 @@ plugins {
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 }
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: "androidx.navigation.safeargs.kotlin"
 
 android {
@@ -38,13 +37,11 @@ android {
     }
     buildFeatures {
         viewBinding true
-        dataBinding true
-
     }
     buildscript {
         dependencies {
-            classpath("com.google.android.libraries.mapsplatform.secrets-gradle-plugin:secrets-gradle-plugin:2.0.1")
-            classpath 'com.google.gms:google-services:4.3.13'
+          //  classpath("com.google.android.libraries.mapsplatform.secrets-gradle-plugin:secrets-gradle-plugin:2.0.1")
+          //  classpath 'com.google.gms:google-services:4.3.13'
             def nav_version = "2.5.1"
             classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
 

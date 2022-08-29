@@ -38,17 +38,25 @@
         <entry key="..\:/trianglz_intern/marketPlace/app/src/main/res/layout/toolbar.xml" value="0.11666666666666667" />
         <entry key="..\:/trianglz_intern/marketPlace/app/src/main/res/mipmap-anydpi-v26/icon_btn_add_more_dark.png.xml" value="0.1885" />
         <entry key="..\:/trianglz_intern/marketPlace_backup/app/src/main/res/drawable/capsule_shape.xml" value="0.14" />
+        <entry key="..\:/trianglz_intern/marketPlace_backup/app/src/main/res/drawable/ic_group_anchor.xml" value="0.14" />
+        <entry key="..\:/trianglz_intern/marketPlace_backup/app/src/main/res/drawable/path_2.xml" value="0.17" />
+        <entry key="..\:/trianglz_intern/marketPlace_backup/app/src/main/res/drawable/ripple.xml" value="0.2" />
+        <entry key="..\:/trianglz_intern/marketPlace_backup/app/src/main/res/drawable/sold_out_rect.xml" value="0.2" />
+        <entry key="..\:/trianglz_intern/marketPlace_backup/app/src/main/res/layout/activity_main.xml" value="0.18333333333333332" />
         <entry key="..\:/trianglz_intern/marketPlace_backup/app/src/main/res/layout/fragment_product_details.xml" value="0.223731884057971" />
         <entry key="..\:/trianglz_intern/marketPlace_backup/app/src/main/res/layout/fragmet_list_of_products.xml" value="0.223731884057971" />
         <entry key="..\:/trianglz_intern/marketPlace_backup/app/src/main/res/layout/header_view.xml" value="0.115625" />
-        <entry key="..\:/trianglz_intern/marketPlace_backup/app/src/main/res/layout/horse_info_view.xml" value="0.115625" />
+        <entry key="..\:/trianglz_intern/marketPlace_backup/app/src/main/res/layout/horse_info_view.xml" value="0.2" />
         <entry key="..\:/trianglz_intern/marketPlace_backup/app/src/main/res/layout/image_list_item.xml" value="0.223731884057971" />
-        <entry key="..\:/trianglz_intern/marketPlace_backup/app/src/main/res/layout/item_product_list.xml" value="0.223731884057971" />
+        <entry key="..\:/trianglz_intern/marketPlace_backup/app/src/main/res/layout/item_product_list.xml" value="0.536" />
+        <entry key="..\:/trianglz_intern/marketPlace_backup/app/src/main/res/layout/item_similar_products.xml" value="0.144" />
         <entry key="..\:/trianglz_intern/marketPlace_backup/app/src/main/res/layout/location_info_view.xml" value="0.223731884057971" />
         <entry key="..\:/trianglz_intern/marketPlace_backup/app/src/main/res/layout/owner_info_view.xml" value="0.223731884057971" />
-        <entry key="..\:/trianglz_intern/marketPlace_backup/app/src/main/res/layout/product_details_view.xml" value="0.223731884057971" />
+        <entry key="..\:/trianglz_intern/marketPlace_backup/app/src/main/res/layout/product_details_view.xml" value="0.4" />
+        <entry key="..\:/trianglz_intern/marketPlace_backup/app/src/main/res/layout/progress_dialog.xml" value="0.223731884057971" />
         <entry key="..\:/trianglz_intern/marketPlace_backup/app/src/main/res/layout/similar_item_view.xml" value="0.223731884057971" />
         <entry key="..\:/trianglz_intern/marketPlace_backup/app/src/main/res/layout/similar_products_item.xml" value="0.223731884057971" />
+        <entry key="..\:/trianglz_intern/marketPlace_backup/app/src/main/res/layout/similar_products_view.xml" value="0.1" />
         <entry key="..\:/trianglz_intern/marketPlace_backup/app/src/main/res/layout/toolbar.xml" value="0.17083333333333334" />
       </map>
     </option>

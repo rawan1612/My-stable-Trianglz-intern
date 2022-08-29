@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">marketPlace</string>
+    <string-array name="Countries">
+        <item>الكويت</item>
+        <item>مصر</item>
+        <item>المملكةالعربية السعودية</item>
+    </string-array>
+    <string name="allTab">جميع المنتجات</string>
+    <string name="horseTradingTab">الأحصنة</string>
+    <string name="usedEquipmentTab">المعدات المستعمله</string>
+    <string name="currencyAndPrice">%1$s %2$s</string>
+    <string name="noItem">لا يوجد منتجات</string>
+    <string name="noAvailableItems">لا يوجد منتجات لهذه الدولة</string>
+    <string name="hello_blank_fragment">اهلا</string>
+    <string name="horse_info">معلومات الاحصنة</string>
+    <string name="Location_on_map">العنوان على الخريطة</string>
+    <string name="Horse_Name">اسم الحصان</string>
+    <string name="Horse_Color">لون الحصان</string>
+    <string name="Horse_Sex_type">نوع الحصان</string>
+    <string name="Horse_Gender">فصيلة الحصان</string>
+    <string name="DOB">تاريخ الميلاد</string>
+    <string name="Horse_Breed">تصنيف الحصان</string>
+    <string name="Horse_Strain">سلالة الحصان</string>
+    <string name="no_phone">لا يوجد هاتف محمول مدخل</string>
+    <string name="email_client">اختار الوسيلة</string>
+    <string name="no_email">لا يوجد بريد اليكتروني مدخل</string>
+    <string name="expireDate">ينهتي الاعلان في %1$s</string>
+    <string name="details">التفاصيل</string>
+    <string name="owner">المالك</string>
+    <string name="Sold_out">مباع</string>
+    <string name="similar_items">منتجات مماثلة</string>
+    <string name="GOOGLE_MAPS_API_KEY">AIzaSyDsfZghSLFcbud2vqF2ZDVhpkPTa4_Z2XU</string>
+    <string name="please_wait">أنتظر قليلا من فضلك</string>
+
+</resources>

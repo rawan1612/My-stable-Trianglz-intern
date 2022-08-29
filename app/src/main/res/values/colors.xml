@@ -7,10 +7,10 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="veryLightPink">#faf7f3</color>
-    <color name="darkBeige">#a98264</color>
+    <color name="very_Light_Pink">#faf7f3</color>
+    <color name="dark_Beige">#a98264</color>
     <color name="dark">#232f38</color>
-    <color name="veryLightBrown">#d4b287</color>
+    <color name="very_Light_Brown">#d4b287</color>
     <color name="dark_50">#80232f38</color>
     <color name="dark_87">#df232f38</color>
     <color name="cool_grey">#90969b</color>

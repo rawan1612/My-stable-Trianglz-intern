@@ -3,30 +3,33 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="65.2dp">
+
     <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/header"
+        android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:orientation="horizontal">
+        app:layout_constraintTop_toTopOf="parent">
+
         <TextView
             android:id="@+id/spinner"
+            style="@style/TextStyle"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_marginStart="22.4dp"
             android:layout_marginTop="17.6dp"
             android:gravity="left"
-            style="@style/TextStyle"
             android:text="Kuwait"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
         <ImageView
             android:layout_width="14dp"
             android:layout_height="14dp"
-            android:layout_marginTop="30dp"
             android:layout_marginStart="10dp"
-            android:src="@drawable/group_5">
+            android:layout_marginTop="30dp"
+            android:src="@drawable/ic_group_anchor">
 
         </ImageView>
 
@@ -49,11 +52,11 @@
             android:id="@+id/imageView"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:background="@color/veryLightPink"
+            android:background="@color/very_Light_Pink"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/icon_btn_add_more_dark" />
+            app:srcCompat="@drawable/ic_icon_btn_add_more_dark" />
 
     </androidx.cardview.widget.CardView>
 
@@ -67,5 +70,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/icon_stores_normal" />
+        app:srcCompat="@drawable/ic_icon_stores_search" />
 </androidx.constraintlayout.widget.ConstraintLayout>

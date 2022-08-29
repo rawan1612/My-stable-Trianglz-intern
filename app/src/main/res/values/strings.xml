@@ -18,18 +18,18 @@
     <string name="Horse_Color">Horse Color</string>
     <string name="Horse_Sex_type">Horse Sex type</string>
     <string name="Horse_Gender">Horse Gender</string>
-    <string name="DOF">Date of Birth</string>
+    <string name="DOB">Date of Birth</string>
     <string name="Horse_Breed">Horse Breed</string>
     <string name="Horse_Strain">Horse Strain</string>
     <string name="no_phone">No phone number provided</string>
     <string name="email_client">choose Email Client</string>
     <string name="no_email">No email provided</string>
-    <string name="expireDate">This ad ends in %1$s %2$s</string>
+    <string name="expireDate">This ad ends in %1$s</string>
     <string name="details">Details</string>
     <string name="owner">Owner</string>
     <string name="Sold_out">Sold out</string>
     <string name="similar_items">Similar items</string>
     <string name="GOOGLE_MAPS_API_KEY">AIzaSyDsfZghSLFcbud2vqF2ZDVhpkPTa4_Z2XU</string>
-"
+    <string name="please_wait">please wait</string>
 
 </resources>

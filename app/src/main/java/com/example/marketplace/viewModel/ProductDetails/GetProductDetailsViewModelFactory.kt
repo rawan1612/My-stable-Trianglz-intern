@@ -1,14 +1,14 @@
 package com.example.marketplace.viewModel.ProductDetails
 
+import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.marketplace.model.RepositoryInterface
-import com.example.marketplace.viewModel.ProductsList.GetProductViewModel
+import com.example.marketplace.model.IProductsRepository
 
-class GetProductDetailsViewModelFactory (private val repo: RepositoryInterface): ViewModelProvider.Factory {
+class GetProductDetailsViewModelFactory (private val repo: IProductsRepository,private val context: Context): ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return if (modelClass.isAssignableFrom(GetProductDetailsViewModel::class.java)) {
-            GetProductDetailsViewModel(repo) as T
+            GetProductDetailsViewModel(repo,context) as T
         } else {
             throw IllegalArgumentException("GetProductDetailsViewModelFactory Class not found")
         }

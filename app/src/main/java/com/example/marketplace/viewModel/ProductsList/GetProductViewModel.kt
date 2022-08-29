@@ -6,14 +6,15 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.marketplace.model.DataModelInterface
-import com.example.marketplace.model.RepositoryInterface
+import com.example.marketplace.model.IProductsRepository
+import com.example.marketplace.model.ProductCategory
 import kotlinx.coroutines.*
 
-class GetProductViewModel(private val repository: RepositoryInterface): ViewModel() {
-    private val allProductListMutableLiveData : MutableLiveData<List<DataModelInterface.Response>> = MutableLiveData()
-    val allProductListLiveData : LiveData<List<DataModelInterface.Response>> = allProductListMutableLiveData
-    private val filteredProductListMutableLiveData : MutableLiveData<List<DataModelInterface.Response>> = MutableLiveData()
-    val filteredProductListLiveData : LiveData<List<DataModelInterface.Response>> = filteredProductListMutableLiveData
+class GetProductViewModel(private val repository: IProductsRepository): ViewModel() {
+    private val allProductListMutableLiveData : MutableLiveData<List<DataModelInterface.ProductInfo>> = MutableLiveData()
+    val allProductListLiveData : LiveData<List<DataModelInterface.ProductInfo>> = allProductListMutableLiveData
+    private val filteredProductListMutableLiveData : MutableLiveData<List<DataModelInterface.ProductInfo>> = MutableLiveData()
+    val filteredProductListLiveData : LiveData<List<DataModelInterface.ProductInfo>> = filteredProductListMutableLiveData
     init {
         getAllProduct()
     }
@@ -34,7 +35,7 @@ class GetProductViewModel(private val repository: RepositoryInterface): ViewMode
                 }
         }
     }
-    fun getProductsByCategory(selectedCategory :String){
+    fun getProductsByCategory(selectedCategory :ProductCategory){
         viewModelScope.launch(Dispatchers.IO){
                 delay(1000)
                 val response = repository.getProductsByCategory(selectedCategory)
