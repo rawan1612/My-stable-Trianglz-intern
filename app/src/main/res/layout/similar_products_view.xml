@@ -17,20 +17,23 @@
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-<FrameLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/similar_items_TextView">
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/similar_items_Recycler"
+
+    <FrameLayout
+        android:id="@+id/similar_items_frameLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:clipToPadding="false"
-        android:paddingStart="22dp"
-        android:paddingEnd="22dp"
-        tools:listitem="@layout/item_similar_products" />
-</FrameLayout>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/similar_items_TextView">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/similar_items_Recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:clipToPadding="false"
+            android:paddingStart="22dp"
+            android:paddingEnd="22dp"
+            tools:listitem="@layout/item_similar_products" />
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

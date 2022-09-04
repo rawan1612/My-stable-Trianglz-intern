@@ -33,6 +33,16 @@ class SimilarIPostsAdapter(private val context: Context) : ListAdapter<DataModel
         position: Int
     ) {
         val item = getItem(position)
+        holder.itemView.setOnClickListener {
+            val action = item.productId?.let { productID ->
+                ProductDetailsFragmentDirections.actionProductDetailsSelf(
+                    productID
+                )
+            }
+            if (action != null) {
+                Navigation.findNavController(holder.itemView).navigate(action)
+            }
+        }
         holder.setData(item)
     }
 
@@ -48,18 +58,9 @@ class SimilarIPostsAdapter(private val context: Context) : ListAdapter<DataModel
            itemName.text = item.itemName
             itemPrice.text = item.currency + " " + item.price
 
-            /*
-            context.setOnClickListener {
-                val action = item.productId?.let { productID ->
-                    ProductDetailsFragmentDirections.actionProductDetailsSelf(
-                        productID
-                    )
-                }
-                if (action != null) {
-                    Navigation.findNavController(holder.itemView).navigate(action)
-                }
-            }
-             */
+
+
+
         }
 
     }

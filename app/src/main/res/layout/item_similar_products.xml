@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="170dp"
     android:layout_height="160dp"
-    android:layout_marginBottom="10dp"
     android:layout_marginEnd="10dp"
+    android:layout_marginBottom="10dp"
     app:cardCornerRadius="10dp">
 
     <ImageView
@@ -25,10 +25,10 @@
         android:id="@+id/similar_item_name"
         android:layout_width="wrap_content"
         android:layout_height="20dp"
+        android:layout_gravity="left"
         android:layout_marginStart="12dp"
         android:layout_marginTop="98dp"
         android:layout_marginBottom="32dp"
-        android:layout_gravity="left"
         android:fontFamily="@font/sfp_semibold"
         android:textAppearance="?attr/textAppearanceListItem"
         android:textColor="@color/white"
@@ -39,6 +39,7 @@
         android:id="@+id/similar_item_price"
         android:layout_width="wrap_content"
         android:layout_height="14dp"
+        android:layout_gravity="left"
         android:layout_marginStart="12dp"
         android:layout_marginTop="122dp"
         android:layout_marginBottom="12dp"
@@ -46,6 +47,5 @@
         android:textAppearance="?attr/textAppearanceListItem"
         android:textColor="@color/very_Light_Brown"
         android:textSize="12sp"
-        android:layout_gravity="left"
         tools:text="KWD 7500" />
 </androidx.cardview.widget.CardView>

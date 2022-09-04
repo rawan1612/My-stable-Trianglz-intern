@@ -74,7 +74,7 @@ class ListOfProductFragment : Fragment() {
                     dialog.dismiss()
                     productAdapter.submitList(emptyList())
                     binding.apply {
-                        list.visibility = View.INVISIBLE
+                        productList.visibility = View.INVISIBLE
                         notAvailableLocation.visibility = View.VISIBLE
                         noItemTextView.visibility = View.VISIBLE
                         noProduct.visibility = View.VISIBLE
@@ -96,7 +96,7 @@ class ListOfProductFragment : Fragment() {
                 else{
                     dialog.dismiss()
                     binding.apply {
-                        list.visibility = View.INVISIBLE
+                        productList.visibility = View.INVISIBLE
                         notAvailableLocation.visibility = View.VISIBLE
                         noItemTextView.visibility = View.VISIBLE
                         noProduct.visibility = View.VISIBLE
@@ -115,7 +115,7 @@ class ListOfProductFragment : Fragment() {
     }
     private fun invisibleNoProductsViewItems(){
         binding.apply {
-            list.visibility = View.VISIBLE
+            productList.visibility = View.VISIBLE
             notAvailableLocation.visibility = View.INVISIBLE
             noItemTextView.visibility = View.INVISIBLE
             noProduct.visibility = View.INVISIBLE
@@ -176,7 +176,7 @@ class ListOfProductFragment : Fragment() {
 
     }
     private fun setUpAllProductsList(position: Int){
-        val recycle = binding.list
+        val recycle = binding.productList
         // Set the adapter
         with(recycle) {
             layoutManager =  GridLayoutManager(this.context, columnCount)
