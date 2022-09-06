@@ -59,7 +59,7 @@
         android:paddingStart="22dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/product_price_tv"
-        tools:context=".view.productDetails.ProductDetailsFragment"
+        tools:context=".presentation.productDetailsView.ProductDetailsFragment"
         tools:layout_height="200dp"
         tools:listitem="@layout/image_list_item" />
 

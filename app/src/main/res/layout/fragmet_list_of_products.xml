@@ -48,7 +48,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:context=".view.productsList.ListOfProductFragment"
+            tools:context=".presentation.productsListView.ListOfProductFragment"
             tools:listitem="@layout/item_product_list" />
 
         <ImageView
